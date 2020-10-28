@@ -13,26 +13,27 @@ class Cell
 {
 private:
 	bool alive;
-	bool tmpAlive;
+	//bool tmpAlive;
 	int numberOfAliveMembers;
 	struct Coordinates
 	{
-	int x;
-	int y;
+		int x;
+		int y;
 	};
 	Coordinates cordXY;
 public:
 
 	Cell()
 	{
-		alive = true;
-		tmpAlive = true;
-		numberOfAliveMembers = cordXY.x = cordXY.y = 0;
+		alive = false;
+		//tmpAlive = true;
+		numberOfAliveMembers = 0;
+			cordXY.x = cordXY.y = 0;
 		//cout << "hello" << endl;
 	}
 	~Cell()
 	{
-	//	cout << "bye" << endl;
+		//	cout << "bye" << endl;
 	}
 
 	void getCoordinates(int i, int j)
@@ -46,11 +47,17 @@ public:
 	}
 	void getState(char st)
 	{
-		if(st == '*')
-		this->alive = true;
+		if (st == '*')
+			this->alive = true;
 		else
 			this->alive = false;
 	}
+
+	void getState(bool st)
+	{
+			this->alive = st;
+	}
+
 	char telleState()
 	{
 		if (this->alive == true)
@@ -67,79 +74,38 @@ public:
 	void changeState()
 	{
 		// Life
-		if(this->alive == true)
+		if (this->alive == true)
 		{
 
-		if( (this->numberOfAliveMembers < 2) || (this->numberOfAliveMembers > 3))
+			if ((this->numberOfAliveMembers < 2) || (this->numberOfAliveMembers > 3))
 
-				this->tmpAlive = false;
-		else
-				this->tmpAlive = true;
+				this->/*tmp*/alive = false;
+			else
+				this->/*tmp*/alive = true;
 		}
 		//Dead
 		else
 			if (this->numberOfAliveMembers == 3)
 			{
-				this->tmpAlive = true;
+				this->/*tmp*/alive = true;
 			}
 			else
-				this->tmpAlive = false;
+				this->/*tmp*/alive = false;
 	}
 
-	void step()
-	{
-		this->alive  =  this->tmpAlive;
-		this->numberOfAliveMembers = 0;
-	}
+	//void step()
+	//{
+	//	this->alive  =  this->tmpAlive;
+	//	this->numberOfAliveMembers = 0;
+	//}
 
 	void inkrementAlive()
 	{
-		++this->numberOfAliveMembers;
+		++(this->numberOfAliveMembers);
 	}
+	void zero()
+	{
+		this->numberOfAliveMembers = 0;
+	}
+
 };
-
-/*
-class Interface
-{
-private:
-
-	int sizeX;
-	int sizeY;
-	int i;
-	int j;
-	string filename;
-	ifstream fp;
-	Cell** mesh;
-
-public:
-
-	Interface()
-	{
-		filename = "Input.txt";
-		fp.open(filename);
-		fp >> sizeX;
-		fp >> sizeY;
-
-		Cell** mesh = new Cell * [sizeX];
-		for (int i = 0; i < sizeX; ++i) 
-		{
-			mesh[i] = new Cell[sizeY];
-			for (int j = 0; j < sizeY; ++j) {
-				mesh[i][j].getCoordinates(i, j);
-			}
-		}
-
-	}
-
-	~Interface(Cell** mesh, int sizeX)
-	{
-		cout << "Wow!" << endl;
-
-		// Free memory
-		for (int i = 0; i < sizeX; ++i)
-			delete[] mesh[i];
-		delete[] mesh;
-
-	}
-	
-};*/
