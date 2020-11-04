@@ -1,6 +1,6 @@
 ﻿
 #include "Header.h"
-
+/*
 void playGame(Cell** mesh, Cell** mesh1, int sizeX, int sizeY)
 {
 	for (int i = 0; i < sizeX; i++)
@@ -289,6 +289,7 @@ void main()
 	cin >> numOfIter;
 	cout << endl;
 	system("CLS");
+
 	if (numOfIter == 0)
 	{
 	// Output
@@ -401,3 +402,4 @@ void main()
 		delete[] mesh1[i];
 	delete[] mesh1;
 }
+*/
