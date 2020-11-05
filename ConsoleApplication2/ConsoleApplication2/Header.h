@@ -169,8 +169,6 @@ public:
 
 	void initStates(Cell** mesh, Cell** mesh1)
 	{
-		//cout << endl << S.sizeX << " " << S.sizeY << " " << mesh << endl;
-		// Initialize states
 		for (int i = 0; i < S.sizeX; i++)
 		{
 			for (int j = 0; j < S.sizeY; j++)
@@ -180,20 +178,8 @@ public:
 				mesh1[i][j].getState(chTmp);
 			}
 		}
-		cout << endl;
 	}
-	void Output(Cell** mesh)
-	{
-		cout << endl << "Starting output" << endl;
-		//cout << endl << S.sizeX << " " << S.sizeY << " " << mesh << endl;
-		for (int i = 0; i < S.sizeX; ++i) {
-			for (int j = 0; j < S.sizeY; ++j) {
-				cout << mesh[i][j].telleState();
-			}
-			cout << endl;
-		}
-		cout << endl << "Output done" << endl;
-	}
+
 	int getIterationNumber()
 	{
 		cout << endl << "Enter the iteration number ";
@@ -614,8 +600,6 @@ public:
 			}
 
 		}
-
-
 	}
 
 	sizes tellSises()
