@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <exception>
 
-using namespace std;
+using namespace std; 
 
 class Cell
 {
@@ -219,7 +219,7 @@ private:
 public:
 
 
-	GameEngine():  mesh(NULL), mesh1(NULL), tmpAlive(0), time(0)
+	GameEngine():  mesh(nullptr), mesh1(nullptr), tmpAlive(0), time(0)
 	{
 		// Protects program from initializing arrays without sizes
 	}
