@@ -8,3 +8,12 @@ ConsoleApplication3/ConsoleApplication3/ConsoleApplication3.vcxproj
 ConsoleApplication3/.vs/ConsoleApplication3/v16/Browse.VC.db-wal
 ConsoleApplication3/.vs/ConsoleApplication3/v16/Browse.VC.db-shm
 ConsoleApplication3/.vs/ConsoleApplication3/v16/Browse.VC.db
+ConsoleApplication3/.vs/ConsoleApplication3/v16/.suo
+*.tlog
+ConsoleApplication3/Debug/ConsoleApplication3.exe
+ConsoleApplication3/Debug/ConsoleApplication3.ilk
+*.recipe
+*.log
+*.obj
+*.idb
+*.pdb
