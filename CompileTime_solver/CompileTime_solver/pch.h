@@ -25,6 +25,7 @@ private:
 	int pointsNumber;
 	int iterator;
 
+
 public:
 
 	constexpr CompileTimeSolver(double Down, double Up, int MeshDepth) : sum(0), step(0), currentPoint(0),

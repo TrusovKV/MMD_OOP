@@ -11,7 +11,7 @@ TEST(check_polynom, check_polynom) {
 
 int main(int argc, char** argv)
 {
-
+	int aff = 5*5;
 	//___________________________________________________________________
 	 CompileTimeSolver<int> a(0, 10, 300), c(0, 10, 300, velosityProfile);
 	 Output<double> b;
