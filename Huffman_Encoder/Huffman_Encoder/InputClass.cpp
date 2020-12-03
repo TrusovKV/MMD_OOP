@@ -1,28 +1,16 @@
 #include "pch.h"
+#include "Classes.h"
 
-class Input_class
+Input_class::Input_class() : flag(0),  path( "d:\\GitHub\\MMD_OOP\\Huffman_Encoder\\Test.txt")
+{}
+
+map<string, int32_t > Input_class::putInMap()
 {
-private:
-	string s, testWord;
-	bool flag;
-	double counter;
-	string path;
-	ifstream Input_file;
-
-	vector <string> output;
-	vector<string>::iterator p;
-
-	map<string, double > Leter_Stack;
-	map<string, double >::iterator LSp;
-public:
-	Input_class()
+	for (p = output.begin(); p < output.end(); p++) // vector insertion into map
 	{
-		counter = 0;
-		string s = "";// getString
-		string test_word = "";
-		string path = "d:\\GitHub\\MMDep_OOP_Autumn_2020\\MMD_OOP_Task01_Word_Counter\\MMD_OOP_Task01_Word_Counter\\The-Hobbit.txt";// filePath The-Hobbit
-		Input_file.open(path);
-		bool flag = Input_file.is_open(); // is file open
-	};
-
+		Leter_Stack.insert(make_pair(testWord, counter)); // Important!!
+		testWord = *p;
+		Leter_Stack[testWord]++;
+	}
+	return Leter_Stack;
 }
