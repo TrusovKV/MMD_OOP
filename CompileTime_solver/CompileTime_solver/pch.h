@@ -43,7 +43,7 @@ TEST(checkU1dInt, checkU1dInt) {
 template<int64_t N, int8_t step, int8_t order>
 struct integrate1d{
 static const double integ1d() {
-	return 0.005*int1d<N>::value*( static_cast <const double>(step)/static_cast <const double>(order) );
+	return (step)*int1d<N>::value*( 0.005/(order) );
 };
 };
 TEST(checkU1dInteg, checkU1dInteg) {
