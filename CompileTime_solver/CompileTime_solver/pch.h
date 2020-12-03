@@ -42,11 +42,21 @@ TEST(checkU1dInt, checkU1dInt) {
 
 template<int64_t N, int8_t step, int8_t order>
 struct integrate1d{
-static const double integ1d() {
-	return (step)*int1d<N>::value*( 0.005/(order) );
+static const /*double*/int integ1d() {
+	return (step)*int1d<N>::value/**( 0.005/(order) )*/;
 };
 };
 TEST(checkU1dInteg, checkU1dInteg) {
 	EXPECT_EQ(837, static_cast <const unsigned> (100 * integrate1d<1, 1, 1>::integ1d()));
 }
 
+template<int64_t N>
+struct intT1d {
+	static const int value = /*0.005**/(partSum<N>::val + int1d<N - 1>::value);
+};
+
+
+//constexpr double varf()
+//{
+//0.24 + 0.5 * N + 2.33 * N * N - 0.02 * N * N * N
+//};

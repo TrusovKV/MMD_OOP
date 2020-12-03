@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	cout << f5 << endl;
 	cout << f6 * 0.005 << endl;
 
-	//static_assert(  f3 == 3.0, "int must be 4 bytes");
+	static_assert(  f3 == 3.0, "int must be 4 bytes");
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 }
