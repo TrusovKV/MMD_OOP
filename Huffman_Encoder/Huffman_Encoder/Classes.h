@@ -13,6 +13,8 @@ private:
 	vector <string> output;
 	vector<string>::iterator p;
 
+	string::iterator pString;
+
 	map<string, int32_t > Leter_Stack;
 	map<string, int32_t >::iterator LSp;
 public:
@@ -20,4 +22,5 @@ public:
 	
 	map<string, int32_t > putInMap();
 
+	string readFile();
 };
