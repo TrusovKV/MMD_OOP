@@ -8,9 +8,9 @@
 #include <cstdint>
 using namespace std;
 
-template<int64_t N >
+template<unsigned N >
 struct function {
-	static const int64_t val = static_cast <const unsigned>(100 * (0.24 + 0.5 * N + 2.33 * N * N - 0.02 * N * N * N));
+	static const unsigned val = 24 + 50 * N + 233 * N * N - 2 * N * N * N; /*static_cast < const unsigned>(100 * (0.24 + 0.5 * N + 2.33 * N * N - 0.02 * N * N * N))*/;
 };
 
 TEST(checkFunc, checkFunc) {
