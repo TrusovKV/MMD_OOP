@@ -1,4 +1,6 @@
 #pragma once
+#include <Windows.h>
+
 
 #include "gtest/gtest.h"
 #include <iostream>
@@ -6,6 +8,7 @@
 #include <math.h>
 #include <gtest/gtest.h>
 #include <cstdint>
+
 using namespace std;
 
 template<unsigned N >
@@ -42,8 +45,8 @@ TEST(checkU1dInt, checkU1dInt) {
 
 template<int64_t N, int8_t step, int8_t order>
 struct integrate1d{
-static const /*double*/int integ1d() {
-	return (step)*int1d<N>::value/**( 0.005/(order) )*/;
+static const double /*int*/ integ1d() {
+	return (step)*int1d<N>::value*( 0.005/(order) );
 };
 };
 TEST(checkU1dInteg, checkU1dInteg) {
@@ -52,9 +55,13 @@ TEST(checkU1dInteg, checkU1dInteg) {
 
 template<int64_t N>
 struct intT1d {
-	static const int value = /*0.005**/(partSum<N>::val + int1d<N - 1>::value);
+static const int value = /*0.005**/(partSum<N>::val + int1d<N - 1>::value);
 };
 
+//template<int64_t N>
+//struct integrate1d_1 {
+//	const static double val = int1d<N>::value * 0.005;
+//};
 
 //constexpr double varf()
 //{
