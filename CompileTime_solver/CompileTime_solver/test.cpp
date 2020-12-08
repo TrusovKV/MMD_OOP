@@ -53,18 +53,18 @@ int main(int argc, char** argv)
 	static const int f1 = int1d<1>::value;
 	static const int g = f6 * 0.005;//997.095;
 	static const double h = f6 * 0.005;//997.095;
+	static const double H(997+ 0.095);
 	cout << f0 << endl;
 	static_assert(f0 == 199419/*997.095*/);
 	static_assert(f1 == 1674, "int must be 4 bytes");
 	static_assert(f6 == 199419, "int must be 4 bytes");
-
-	static_assert(997.095 == f6*0.005, "int must be 4 bytes");
+	//static_assert( H == h);
+	static_assert(997.095 == f6*0.005);
 	static_assert(997/*.095*/ == g);
 	constexpr auto integral = Integrate(1, 11, polynom);
 	static_assert(997.095 == integral);
 	cout << "integral = " << integral << endl;
 	cout << g << " " << static_cast<int>(100*polynom(0)) << endl;
-
 
 	cout << f5 << endl;
 	cout << f6 * 0.005 << endl;
