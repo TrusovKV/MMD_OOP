@@ -61,8 +61,10 @@ int main(int argc, char** argv)
 	//static_assert( H == h);
 	static_assert(997.095 == f6*0.005);
 	static_assert(997/*.095*/ == g);
+
 	constexpr auto integral = Integrate(1, 11, polynom);
 	static_assert(997.095 == integral);
+
 	cout << "integral = " << integral << endl;
 	cout << g << " " << static_cast<int>(100*polynom(0)) << endl;
 
