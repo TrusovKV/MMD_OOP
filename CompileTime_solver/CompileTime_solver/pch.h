@@ -58,10 +58,10 @@ struct intT1d {
 static const int value = /*0.005**/(partSum<N>::val + int1d<N - 1>::value);
 };
 
-//template<int64_t N>
-//struct integrate1d_1 {
-//	const static double val = int1d<N>::value * 0.005;
-//};
+template<unsigned N>
+struct integrate1d_1 {
+	const static double val = int1d<N>::value * 0.005;
+};
 
 //constexpr double varf()
 //{

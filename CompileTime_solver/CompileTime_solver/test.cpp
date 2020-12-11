@@ -54,6 +54,7 @@ int main(int argc, char** argv)
 
 	// Template-based calculations
 	static const int f6 =  int1d<10>::value;
+
 	static const int f1 = int1d<1>::value;
 	static const int g = f6 * 0.005;//997.095;
 	static const double h = f6 * 0.005;//997.095;
