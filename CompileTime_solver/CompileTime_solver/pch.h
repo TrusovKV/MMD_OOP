@@ -60,10 +60,21 @@ static const int value = /*0.005**/(partSum<N>::val + int1d<N - 1>::value);
 
 template<unsigned N>
 struct integrate1d_1 {
-	const static double val = int1d<N>::value * 0.005;
+	static const int ii = int1d<N>::value;
+inline const static double val = ii * 0.005;
+
 };
 
-//constexpr double varf()
-//{
-//0.24 + 0.5 * N + 2.33 * N * N - 0.02 * N * N * N
-//};
+template<unsigned N>
+constexpr double integrate1d_2() {
+	return (int1d<N>::value )* 0.005;
+};
+
+template <unsigned N> 
+class integralchik
+{
+public:
+	static const int ii = int1d<N>::value;
+	inline static const double val = ii * 0.005;
+
+};
