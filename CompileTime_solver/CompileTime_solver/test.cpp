@@ -87,16 +87,17 @@ int main(int argc, char** argv)
 
 	//constexpr double h1 = integrate1d_2<10>();
 
-	static const double testVar = 0.005;
-	static const int ruut = 80000000;
-	static const bool comp = testVar < ruut;
+	//inline static const double testVar = 0.005;
+	// static const int ruut = 80000000;
+	// static const bool comp = testVar < ruut;
 
-	static_assert(  comp);
+	static_assert(summ<10>::res < 1500);
 	integralchik<10> h1;
 
+	static const double g9 = h1.val + 5;
 
+	cout << h  << "cobra h1:  "<< h1 .val<< " g9:  " << g9  <<  "	summ<10>::res  "<< summ<11>::res <<endl << endl;
 
-	cout << h  << "cobra h1:  "<< h1 .val<< endl;
 
 
 	testing::InitGoogleTest(&argc, argv);

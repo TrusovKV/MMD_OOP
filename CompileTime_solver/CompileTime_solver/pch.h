@@ -62,7 +62,7 @@ template<unsigned N>
 struct integrate1d_1 {
 	static const int ii = int1d<N>::value;
 inline const static double val = ii * 0.005;
-
+static_assert(val < 1000);
 };
 
 template<unsigned N>
@@ -77,4 +77,22 @@ public:
 	static const int ii = int1d<N>::value;
 	inline static const double val = ii * 0.005;
 
+};
+
+
+template<unsigned N >
+struct func {
+	inline static const double val = 0.24 + 0.5 * N + 2.33 * N * N - 0.02 * N * N * N;
+};
+
+template<int N>
+struct summ
+{
+	inline static const double res = 0.5*(function<N>::val + summ<N - 1>::res);
+};
+
+template<>
+struct summ<0>
+{
+	inline static const double res = 0.5* function<0>::val;
 };
