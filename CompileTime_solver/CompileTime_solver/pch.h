@@ -88,11 +88,11 @@ struct func {
 template<int N>
 struct summ
 {
-	inline static const double res = 0.5*(function<N>::val + summ<N - 1>::res);
+	inline static const double res = 0.5*(func<N>::val + summ<N - 1>::res);
 };
 
 template<>
 struct summ<0>
 {
-	inline static const double res = 0.5* function<0>::val;
+	inline static const double res = 0.5* func<0>::val;
 };
