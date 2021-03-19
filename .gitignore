@@ -1,5 +1,39 @@
 
 33.pdf
+  
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+*.vcxproj
+# Executables
+*.exe
+*.out
+*.app
+
 Alexandresku_-_Sovremennoe_Proektirovanie_na_C__2015.pdf
 CompileTime_solver/.vs/CompileTime_solver/v16/.suo
 CompileTime_solver/.vs/CompileTime_solver/v16/Browse.VC.db
@@ -85,6 +119,7 @@ CompileTime_solver/packages/Microsoft.googletest.v140.windesktop.msvcstl.static.
 CompileTime_solver/packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3/lib/native/v140/windesktop/msvcstl/static/rt-dyn/x86/Release/gtest_main.pdb
 CompileTime_solver/packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3/license (MIT).txt
 CompileTime_solver/packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3.nupkg
+CompileTime_solver/*
 CompileTime_solver/packages/Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3/ThirdPartyNotices.txt
 cplusplus.pdf
 diss.pdf
@@ -187,6 +222,14 @@ Huffman_Encoder/Debug/Huffman_Encoder.exe
 Huffman_Encoder/Debug/gtestd.pdb
 Huffman_Encoder/Debug/gtestd.dll
 Huffman_Encoder/Debug/gtest_maind.pdb
-Huffman_Encoder/Debug/gtest_maind.dll
+Huffman_Encoder/*
 Huffman_Encoder/Huffman_Encoder/Debug/Huffman_Encoder.tlog/unsuccessfulbuild
 *.obj
+*.ipch
+*.sln
+*.filters
+*.pdb
+*.tlog
+*.log
+*.recipe
+*.idb
