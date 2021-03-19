@@ -10,3 +10,6 @@ Huffman Encoder/*
 *.log
 *.recipe
 *.idb
+SCVParser_Mk1/.vs/SCVParser_Mk1/v16/*
+*.vcxproj
+*.user
