@@ -30,12 +30,12 @@ char const SCVCustomizer::tellDelimiterSymb()
 	return delimiterSymb;
 }
 
-char const SCVCustomizer::tellEscapingSymb()
-{
-	return escapingSymb;
-}
-
 char const SCVCustomizer::tellNewLineSymb()
 {
 	return newLineSymb;
+}
+
+char const SCVCustomizer::tellEscapingSymb()
+{
+	return escapingSymb;
 }
