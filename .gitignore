@@ -236,3 +236,8 @@ Huffman_Encoder/Huffman_Encoder/Debug/Huffman_Encoder.tlog/unsuccessfulbuild
 *.ilk
 *.CopyComplete
 SCVParser_Mk1/*
+HuffmanEncoder/.vs/HuffmanEncoder/v16/Browse.VC.db
+*.db-shm
+*.db-wal
+*.opendb
+*.user
