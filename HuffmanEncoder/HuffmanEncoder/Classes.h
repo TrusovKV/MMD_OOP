@@ -1,5 +1,10 @@
-#include "pch.h"
+#pragma once
+#include <iostream>
+#include<vector>
+#include <map>
 
+
+using namespace std;
 class Input_class
 {
 private:

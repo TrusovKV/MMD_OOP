@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Classes.h"
 
 Input_class::Input_class() : flag(0),  path( "d:\\GitHub\\MMD_OOP\\Huffman_Encoder\\Test.txt")
