@@ -129,16 +129,3 @@ bool csv_parser_iterator< Args...>::operator!=(csv_parser_iterator const& r)
 	return current_row != r.current_row;
 }
 
-template<typename...Args>
-csv_parser_iterator< Args...>::csv_parser_iterator(std::ifstream& file_obj, SCVCustomizer csv_settings& settings, bool end = false) :	in(file_obj),	m_settings(settings)
-{
-	// если флаг == true, то
-	if (end)
-		current_row = -1;// это индекатор того что итератор €вл€етс€ end'ом
-	else
-	{
-		// иначе, прочитываем первую строку из файла
-		current_row = 0;
-		buff = row_parse();
-	}
-}
