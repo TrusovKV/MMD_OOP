@@ -8,60 +8,6 @@
 #include "DataConverter.h"
 #include "LazyIterator.h"
 
-// класс настроек
-// с его помощью можно изменять символы разделителя и экранирования при чтении из файла
-class csv_settings
-{
-public:
-	// конструктор
-	// поумолчанию:
-	// разделитель: ','
-	// символ экранирования: '"'
-	csv_settings() :
-		m_delimiter(','),
-		m_new_line('\n'),
-		m_escaping('"')
-	{
-	}
-	// метод для установки другого символа разделителя
-	bool set_delimiter(char n)
-	{
-		if (n == m_new_line || n == m_escaping)
-			return false;
-
-		m_delimiter = n;
-		return true;
-	}
-	// метод для установки другого символа экранирования 
-	bool set_escaping_symbol(char n)
-	{
-		if (n == m_delimiter || n == m_new_line)
-			return false;
-
-		m_escaping = n;
-		return true;
-	}
-	// метод для получения символа разделителя
-	char const delimiter() const
-	{
-		return m_delimiter;
-	}
-	// метод для получения символа экранирования
-	char const escaping_symbol() const
-	{
-		return m_escaping;
-	}
-	// метод для получения символа перенова строки
-	char const new_line_symbol() const
-	{
-		return m_new_line;
-	}
-
-private:
-	char m_delimiter;// символ разделителя
-	char m_new_line;// символ экранирования
-	char m_escaping;// символ переноса строки
-};
 
 // класс csv парсера
 // реализует ленивое чтение из файла, то есть чтение происходит лишь при запросе
@@ -71,12 +17,11 @@ class csv_parser
 public:
 	// задаём итератор для того чтобы работать с файлом 
 	using iterator = csv_parser_iterator<Args...>;
-public:
 	// консруктор принимает на вход:
 	// file_obj - объект файла
 	// num_skip_rows - количество строк которое необходимо пропустить 
 	// settings - объект настройки
-	csv_parser(std::ifstream& file_obj, int64_t num_skip_rows, csv_settings settings = csv_settings()) :
+	csv_parser(std::ifstream& file_obj, int64_t num_skip_rows, SCVCustomizer settings = SCVCustomizer()) :
 		in(file_obj),
 		m_settings(settings)
 	{
@@ -89,7 +34,7 @@ public:
 		for (; num_skip_rows > 0; --num_skip_rows)
 		{
 			static const int max_line = 65536;
-			in.ignore(max_line, settings.new_line_symbol());
+			in.ignore(max_line, settings.tellNewLineSymb());
 		}
 	}
 	// деструктор
@@ -118,7 +63,7 @@ public:
 
 private:
 	std::ifstream& in;// объект файла
-	csv_settings m_settings;// настройки
+	SCVCustomizer m_settings;// настройки
 };
 
 template <size_t n, typename... T>
