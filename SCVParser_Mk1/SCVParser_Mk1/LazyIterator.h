@@ -12,7 +12,7 @@ private:
 	std::ifstream& in;// объект файла
 	uint64_t column_count = sizeof...(Args);// ожидаемое количество колонок, это количество полученных параметров шаблона
 	int64_t current_row;//текущая строка
-	SCVCustomizer csv_settings& m_settings;//объект настроек
+	SCVCustomizer & m_settings;//объект настроек
 	std::tuple<Args...> buff;//объект с текущими прочитанными данными(одна строка)
 		
 	// метод чтения строки из файла
@@ -25,10 +25,10 @@ private:
 		template<typename T, std::size_t... I>
 	auto make_tuple_impl(T const& data, std::index_sequence<I...>)
 	{
-		return std::make_tuple((stringTo< Args >(data[I]))...);
+		return std::make_tuple((Convert< Args >(data[I]))...);
 	}
 public:
-	csv_parser_iterator(std::ifstream& file_obj, csv_settings& settings, bool end = false);
+	csv_parser_iterator(std::ifstream& file_obj, SCVCustomizer& settings, bool end = false);
 	// оператор префиксного инкремента 
 	csv_parser_iterator& operator++()
 	{
