@@ -2,7 +2,7 @@
 #include <iostream>
 #include<vector>
 #include <map>
-
+#include <fstream>
 
 using namespace std;
 class Input_class
@@ -23,7 +23,7 @@ private:
 	map<string, int32_t > Leter_Stack;
 	map<string, int32_t >::iterator LSp;
 public:
-	Input_class();
+	Input_class();//
 	
 	map<string, int32_t > putInMap();
 

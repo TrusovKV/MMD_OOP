@@ -23,7 +23,7 @@ string Input_class::readFile()
 	{
 		while (Input_file.eof() == false)
 		{
-			Input_file.read(s)
+			Input_file.read(s);
 
 		}
 		return s;
