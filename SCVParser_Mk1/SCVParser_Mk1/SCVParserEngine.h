@@ -51,13 +51,14 @@ class parserSCV
 private:
 	ifstream& stream;
 	tuple<int, string> rowDat;
-
+	SCVCustomizer cust;
 	int16_t item;
 	int16_t curRow;
 	string line;
 	size_t pos;
 	size_t endPos;
 	bool printFlag;
+
 public:
 
 
@@ -71,14 +72,16 @@ public:
 		getline(stream, line);
 		if (line.length() > 0)
 		{
-			pos = line.find(";");
+			pos = line.find(/*";"*/ cust.tellDelimiterSymb() );
 			get<0>(rowDat) = from_string<int>(line.substr(0, pos));
 			item++;
 
-			pos = line.find(";");
+			pos = line.find(/*";"*/ cust.tellDelimiterSymb() );
 
-			pos = line.find('\"\"');
-			endPos = line.find('\"\"', pos + 4);
+			//cust.set_escaping_symbol(line.find('\"\"') );
+
+			pos = line.find(/*'\"\"'*/ cust.tellEscapingSymb() );
+			endPos = line.find(/*'\"\"'*/ cust.tellEscapingSymb() , pos + cust.tellEscapingSymbLength() );
 
 			if (endPos != -1)
 			{

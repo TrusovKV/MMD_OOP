@@ -3,9 +3,8 @@
 #include "SCVCustomizer.h"
 
 
-SCVCustomizer::SCVCustomizer() : delimiterSymb(","), newLineSymb("\n"), escapingSymb("\"")
-{
-};
+SCVCustomizer::SCVCustomizer() : delimiterSymb(","), newLineSymb("\n"), escapingSymb("\"\"\"")
+{};
 
 bool SCVCustomizer::setDelimiter(string t)
 {
@@ -53,15 +52,15 @@ string SCVCustomizer::tellEscapingSymb()
 // Length
 int16_t SCVCustomizer::tellDelimiterSymbLength()
 {
-	return delimiterSymbLength;
+	return delimiterSymb.length();
 }
 
 int16_t SCVCustomizer::tellNewLineSymbLength()
 {
-	return newLineSymbLength;
+	return newLineSymb.length();
 }
 
 int16_t SCVCustomizer::tellEscapingSymbLength()
 {
-	return escapingSymbLength;
+	return escapingSymb.length();
 }

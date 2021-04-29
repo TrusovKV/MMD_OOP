@@ -8,12 +8,8 @@ class SCVCustomizer
 {
 private:
 	string delimiterSymb;
-	string newLineSymb; // DELIM FOR GETLINE
 	string escapingSymb;
-
-	int16_t delimiterSymbLength;
-	int16_t newLineSymbLength;
-	int16_t escapingSymbLength;
+	string newLineSymb; // DELIM FOR GETLINE
 public:
 
 	SCVCustomizer();
