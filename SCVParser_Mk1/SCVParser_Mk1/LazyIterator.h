@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef _TESTTEMP_H_
+#define _TESTTEMP_H_
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,7 +14,8 @@
 
 using namespace std;
 
-template <typename T> T from_string(const string& str)
+template <typename T> 
+T from_string(const string& str)
 {
 	stringstream inputString(str);
 	T buf;
@@ -64,7 +69,6 @@ public:
 
 	parserSCV(ifstream& in) : stream(in), item(0), pos(0), endPos(0), line(" "), printFlag(0)
 	{
-		cout << "started" << endl;
 	};
 
 	void getElement()
@@ -112,3 +116,5 @@ public:
 	}
 
 };
+
+#endif
