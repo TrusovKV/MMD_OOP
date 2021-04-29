@@ -6,7 +6,14 @@ using namespace std;
 
 int main()
 {
-    ifstream file_obj("D:\\GitHub\\MMD_OOP\\SCVParser_Mk1\\SCVParser_Mk1\\test.txt");
-    csv_parser<int, string, double> sp( file_obj, 0, SCVCustomizer());
+    ifstream input("D:\\GitHub\\MMD_OOP\\SCVParser_Mk1\\test.csv");
+    parserSCV<int, string> parser(input);
+
+    //parser.getElement();
+//    parser.printForEach();
+    parser.getAllElements();
+
+    return 0;
 }
 
+// "D:\\GitHub\\MMD_OOP\\SCVParser_Mk1\\test.csv"

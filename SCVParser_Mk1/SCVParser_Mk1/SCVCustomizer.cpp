@@ -24,7 +24,7 @@ bool SCVCustomizer::set_escaping_symbol(char t)
 	escapingSymb = t;
 	return true;
 };
-
+//Tell Symbols
 char const SCVCustomizer::tellDelimiterSymb()
 {
 	return delimiterSymb;
@@ -38,4 +38,19 @@ char const SCVCustomizer::tellNewLineSymb()
 char const SCVCustomizer::tellEscapingSymb()
 {
 	return escapingSymb;
+}
+// Length
+int16_t SCVCustomizer::tellDelimiterSymbLength()
+{
+	return delimiterSymbLength;
+}
+
+int16_t SCVCustomizer::tellNewLineSymbLength()
+{
+	return newLineSymbLength;
+}
+
+int16_t SCVCustomizer::tellEscapingSymbLength()
+{
+	return escapingSymbLength;
 }

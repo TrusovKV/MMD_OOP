@@ -1,81 +1,111 @@
 #pragma once
-
-#pragma once
 #include <iostream>
-#include <vector>
+#include <fstream>
 #include <sstream>
+#include <tuple>
+#include <iterator>
+#include <vector>
+#include <string>
+#include <stdint.h>
 
-#include "DataConverter.h"
-#include "LazyIterator.h"
+using namespace std;
 
-
-template<typename... Args>
-class csv_parser
+template <typename T> T from_string(const string& str)
 {
+	stringstream inputString(str);
+	T buf;
+	inputString >> buf;
+	return buf;
+}
+
+template <> string from_string(const string& str)
+{
+	return str;
+}
+
+template<size_t J = 0, typename func, typename... Args>
+typename enable_if<J != sizeof... (Args)>::type
+for_each(tuple<Args...>& tup, func function)
+{
+	function(get<J>(tup));
+	for_each<J + 1, func, Args...>(tup, function);
+}
+
+template<size_t J = 0, typename func, typename... Args>
+typename enable_if<J == sizeof... (Args)>::type
+for_each(tuple<Args...>&, func)
+{}
+
+struct print 
+{
+	template<typename T>
+	void operator()(const T& val)
+	{
+		cout << val << " "; 
+	}
+};
+
+template <typename... Args>
+class parserSCV
+{
+private:
+	ifstream& stream;
+	tuple<int, string> rowDat;
+
+	int16_t item;
+	int16_t curRow;
+	string line;
+	size_t pos;
+	size_t endPos;
+	bool printFlag;
 public:
 
-	using iterator = csv_parser_iterator<Args...>;
 
-	csv_parser(std::ifstream& file_obj, int64_t num_skip_rows, SCVCustomizer settings = SCVCustomizer()) :
-		in(file_obj),
-		m_settings(settings)
+	parserSCV(ifstream& in) : stream(in), item(0), pos(0), endPos(0), line(" "), printFlag(0)
 	{
-		if (!file_obj)
-			throw std::runtime_error("File not open");
+		cout << "started" << endl;
+	};
 
-		std::string buff;
-		for (; num_skip_rows > 0; --num_skip_rows)
+	void getElement()
+	{
+		getline(stream, line);
+		if (line.length() > 0)
 		{
-			static const int max_line = 65536;
-			in.ignore(max_line, settings.tellNewLineSymb());
+			pos = line.find(";");
+			get<0>(rowDat) = from_string<int>(line.substr(0, pos));
+			item++;
+
+			pos = line.find(";");
+
+			pos = line.find('\"\"');
+			endPos = line.find('\"\"', pos + 4);
+
+			if (endPos != -1)
+			{
+				get<1>(rowDat) = from_string<string>(line.substr(pos + 3, endPos - 3 - 4)); // position , length
+			}
+			printFlag = 1;
+		}
+		else
+			printFlag = 0;
+	}
+
+	void printForEach()
+	{
+		if(printFlag == 1)
+		{
+			for_each(rowDat, print());
+			cout << " " << endl;
 		}
 	}
 
-	~csv_parser()
+	void getAllElements()
 	{
-		in.close();
+		while (!stream.eof())
+		{
+			getElement();
+			printForEach();
+		}
 	}
 
-	iterator begin()
-	{
-		in.seekg(in.beg);
-		return iterator(in, m_settings);
-	}
-
-	iterator end()
-	{
-		return iterator(in, m_settings, true);
-	}
-
-	void reset()
-	{
-		in.seekg(in.beg);
-	}
-
-private:
-	std::ifstream& in;
-	SCVCustomizer m_settings;
 };
-
-template <size_t n, typename... T>
-typename std::enable_if<(n >= sizeof...(T))>::type
-print_tuple(std::ostream&, const std::tuple<T...>&)
-{}
-
-template <size_t n, typename... T>
-typename std::enable_if<(n < sizeof...(T))>::type
-	print_tuple(std::ostream& os, const std::tuple<T...>& tup)
-{
-	if (n != 0)
-		os << " ";
-
-	os << std::get<n>(tup);
-	print_tuple<n + 1>(os, tup);
-}
-
-template <typename... T>
-std::ostream& operator<<(std::ostream& os, const std::tuple<T...>& tup)
-{
-	print_tuple<0>(os, tup);
-	return os;
-}
