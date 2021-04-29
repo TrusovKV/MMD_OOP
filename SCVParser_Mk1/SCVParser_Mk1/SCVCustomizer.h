@@ -8,6 +8,10 @@ private:
 	char delimiterSymb;
 	char newLineSymb; // DELIM FOR GETLINE
 	char escapingSymb;
+
+	int16_t delimiterSymbLength;
+	int16_t newLineSymbLength;
+	int16_t escapingSymbLength;
 public:
 
 	SCVCustomizer();
@@ -22,6 +26,6 @@ public:
 
 	int16_t  tellDelimiterSymbLength();
 	int16_t  tellNewLineSymbLength();
-	int16_t tellEscapingSymbLength();
+	int16_t  tellEscapingSymbLength();
 
 };
