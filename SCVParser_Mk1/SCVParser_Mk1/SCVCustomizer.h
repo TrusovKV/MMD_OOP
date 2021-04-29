@@ -1,13 +1,15 @@
 #pragma once
 //#include "SCVCustomizer.cpp"
 #include <stdint.h>
+#include <string>
+using namespace std;
 
 class SCVCustomizer
 {
 private:
-	char delimiterSymb;
-	char newLineSymb; // DELIM FOR GETLINE
-	char escapingSymb;
+	string delimiterSymb;
+	string newLineSymb; // DELIM FOR GETLINE
+	string escapingSymb;
 
 	int16_t delimiterSymbLength;
 	int16_t newLineSymbLength;
@@ -16,16 +18,17 @@ public:
 
 	SCVCustomizer();
  
-	bool setDelimiter(char t);
-	bool set_escaping_symbol(char t);
-	bool set_newLine_symbol(char t);
+	bool setDelimiter(string t);
+	bool set_escaping_symbol(string t);
+	bool set_newLine_symbol(string t);
 
-	char const tellDelimiterSymb();
-	char const tellNewLineSymb();
-	char const tellEscapingSymb();
+	string tellDelimiterSymb();
+	string tellNewLineSymb();
+	string tellEscapingSymb();
 
 	int16_t  tellDelimiterSymbLength();
 	int16_t  tellNewLineSymbLength();
 	int16_t  tellEscapingSymbLength();
+
 
 };

@@ -3,11 +3,11 @@
 #include "SCVCustomizer.h"
 
 
-SCVCustomizer::SCVCustomizer() : delimiterSymb(','), newLineSymb('\n'), escapingSymb('"')
+SCVCustomizer::SCVCustomizer() : delimiterSymb(","), newLineSymb("\n"), escapingSymb("\"")
 {
 };
 
-bool SCVCustomizer::setDelimiter(char t)
+bool SCVCustomizer::setDelimiter(string t)
 {
 	if (t == newLineSymb || t == escapingSymb)
 		return false;
@@ -16,7 +16,7 @@ bool SCVCustomizer::setDelimiter(char t)
 	return true;
 };
 
-bool SCVCustomizer::set_escaping_symbol(char t)
+bool SCVCustomizer::set_escaping_symbol(string t)
 {
 	if (t == delimiterSymb || t == newLineSymb)
 		return false;
@@ -24,21 +24,32 @@ bool SCVCustomizer::set_escaping_symbol(char t)
 	escapingSymb = t;
 	return true;
 };
+
+bool SCVCustomizer::set_newLine_symbol(string t)
+{
+	if (t == delimiterSymb || t == escapingSymb)
+		return false;
+
+	newLineSymb = t;
+	return true;
+};
+
 //Tell Symbols
-char const SCVCustomizer::tellDelimiterSymb()
+string SCVCustomizer::tellDelimiterSymb()
 {
 	return delimiterSymb;
 }
 
-char const SCVCustomizer::tellNewLineSymb()
+string SCVCustomizer::tellNewLineSymb()
 {
 	return newLineSymb;
 }
 
-char const SCVCustomizer::tellEscapingSymb()
+string SCVCustomizer::tellEscapingSymb()
 {
 	return escapingSymb;
 }
+
 // Length
 int16_t SCVCustomizer::tellDelimiterSymbLength()
 {
