@@ -57,7 +57,6 @@ private:
 	ifstream& stream;
 	tuple<int, string> rowDat;
 	SCVCustomizer cust;
-	int16_t item;
 	int16_t curRow;
 	string line;
 	size_t pos;
@@ -67,7 +66,7 @@ private:
 public:
 
 
-	parserSCV(ifstream& in) : stream(in), item(0), pos(0), endPos(0), line(" "), printFlag(0)
+	parserSCV(ifstream& in) : stream(in), pos(0), endPos(0), line(" "), printFlag(0)
 	{
 	};
 
@@ -78,7 +77,6 @@ public:
 		{
 			pos = line.find(/*";"*/ cust.tellDelimiterSymb());
 			get<0>(rowDat) = from_string<int>(line.substr(0, pos));
-			item++;
 
 			pos = line.find(/*";"*/ cust.tellDelimiterSymb());
 
