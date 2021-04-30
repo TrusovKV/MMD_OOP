@@ -13,10 +13,11 @@ Huffman Encoder/*
 SCVParser_Mk1/.vs/SCVParser_Mk1/v16/*
 *.vcxproj
 *.user
-HuffmanEncoder/.vs/HuffmanEncoder/v16/Browse.VC.db
+HuffmanEncoder/*
 *.ilk
 *.exe
 *.ilk
 *.exe
 *.exe
 SCVParser_Mk1/Debug/SCVParser_Mk1.exe
+HuffmanEncoder/.vs/HuffmanEncoder/v16/Browse.VC.db-shm
