@@ -2,9 +2,25 @@
 //
 
 #include <iostream>
+#include "Classes.h"
+
+using namespace std;
+
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Input_class inp;
+
+	inp.buildBase();
+	inp.printMap();
+	inp.insertBase();
+	cout << endl;
+	inp.sortVecOfPairs();
+	cout << endl;
+	inp.insertNode(inp.getMins());
+	inp.eraseMins();
+	inp.sortVecOfPairs();
+
 }
 
