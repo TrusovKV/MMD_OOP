@@ -242,6 +242,5 @@ HuffmanEncoder/.vs/HuffmanEncoder/v16/Browse.VC.db
 *.opendb
 *.user
 HuffmanEncoder/.vs/HuffmanEncoder/v16/.suo
-HuffmanEncoder/.vs/HuffmanEncoder/v16/.suo
-HuffmanEncoder/.vs/HuffmanEncoder/v16/.suo
-HuffmanEncoder/.vs/HuffmanEncoder/v16/.suo
+
+CompileTimeLambda/*
