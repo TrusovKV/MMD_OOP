@@ -17,3 +17,6 @@ SCVParser_Mk1/*
 *.pdb
 *.idb
 *.recipe
+*.db-shm
+*.db-wal
+*.opendb
