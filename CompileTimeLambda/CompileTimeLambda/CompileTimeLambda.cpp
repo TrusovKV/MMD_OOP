@@ -5,18 +5,19 @@
 #include<algorithm>
 #include <array>
 #include <vector>
+#include <math.h>
 using namespace std;
 
 
 constexpr double f(double n)
 {
-    return [n] { return 0.3*n*n - 0.5*n + 4; }();
+    return [n] { return 0.3*n*n - 0.5*n + 4 ; }();
 }
 
 constexpr auto lam = [](double a, double b) { return 0.16665 * (b - a) * (f(a) + f(b) + 4 * f(0.5 * (a + b))); };
 
-template<  typename T>
-constexpr T IntSips(const int NN, T init) {
+//template<  typename T>
+constexpr double IntSips(const int NN, double init) {
     for (int i = 0; i < NN; ++i) 
     {
         init += lam(i,i+1);
