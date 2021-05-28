@@ -18,9 +18,9 @@ int main()
 	cout << endl;
 	inp.sortVecOfPairs();
 	cout << endl;
-	inp.insertNode(inp.getMins());
-	inp.eraseMins();
-	inp.sortVecOfPairs();
+	//inp.insertNode(inp.getMins());
+	//inp.eraseMins();
+	//inp.sortVecOfPairs();
 
 }
 

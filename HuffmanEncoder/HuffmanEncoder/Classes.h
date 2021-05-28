@@ -9,6 +9,7 @@
 #include <Bits.h>
 
 using namespace std;
+
 class Input_class
 {
 private:
@@ -35,51 +36,57 @@ public:
 	void printMap();
 	void insertBase();
 	void sortVecOfPairs();
-	pair<int, string> getMins();
-	void eraseMins();
-	void insertNode(pair<int, string> mins);
+	char tellChar(int pos);
+	int  tellWeight(int pos);
+	int tellSize();
+	//pair<int, string> getMins();
+	//void eraseMins();
+	//void insertNode(pair<int, string> mins);
 };
 
-class Node
+class mapDivision
 {
 private:
-	bool isNode;
-	int number;
-	pair<string, string> node;
-	//unique_ptr< Left;
-
-	//    int  , string
+	map<char, int> CharMap; // <symbol, place in the tree>
+	map<int, int> WeghtMap; // <weight, place in the tree>
 public:
-	void getNumber(int & num)
-	{
-		number = num;
-	}
-	int tellNumber()
-	{
-		return number;
-	}
-	bool tellIsNode()
-	{
-		return isNode;
-	}
-	void addNum(int & num)
-	{
-		node.first.push_back(num);
-	}
+	void insertMapChar(char ch, int pos);
+	void insertMapWeight(int w, int pos);
+	map<char, int>* tellMapChar();
+	map<int, int>* tellWeghtMap();
+	void eraseMapWeightBeg();
 };
 
-class TreeBuilder
+class treeBuilder
+{};
+
+class node
 {
 private:
-	Input_class inp;
+	char ch;
+	int parent;
+	int num1;
+	int num2;
+	bool branch;
 public:
+	node();
+	node(int i);
+	node(int a, int b);
+	void setParent(int par);
+	void setBranch(bool br);
+};
 
-	void makeBase()
-	{
-		inp.buildBase();
-		inp.insertBase();
-	}
-
+class Hub
+{
+private:
+	Input_class input;
+	mapDivision mDiv;
+	vector<node>* tree;
+public:
+	void buildMaps();
 	void buildTree();
-
+	//void keek()
+	//{
+	//	tree->at(0).setBranch
+	//}
 };
