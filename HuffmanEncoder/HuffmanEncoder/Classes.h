@@ -52,9 +52,11 @@ private:
 public:
 	void insertMapChar(char ch, int pos);
 	void insertMapWeight(int w, int pos);
-	map<char, int>* tellMapChar();
-	map<int, int>* tellWeghtMap();
+	map<char, int> tellMapChar();
+	map<int, int> tellWeghtMap();
 	void eraseMapWeightBeg();
+	void insertSortedWeight(pair<int, int> pair);
+	int tellWeightMapSize();
 };
 
 class treeBuilder
@@ -87,6 +89,6 @@ public:
 	void buildTree();
 	//void keek()
 	//{
-	//	tree->at(0).setBranch
+	//	mDiv.insertSortedWeight(make_pair(3, 4));
 	//}
 };
