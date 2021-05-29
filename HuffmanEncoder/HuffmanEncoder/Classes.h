@@ -87,8 +87,4 @@ private:
 public:
 	void buildMaps();
 	void buildTree();
-	//void keek()
-	//{
-	//	mDiv.insertSortedWeight(make_pair(3, 4));
-	//}
 };

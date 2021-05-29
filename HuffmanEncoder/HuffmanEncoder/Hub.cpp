@@ -36,7 +36,10 @@ void Hub::buildTree()
 		tree->at(n1).setParent(tree->size() - 1);
 		tree->at(n1).setBranch(true);
 		mDiv.insertSortedWeight(make_pair(w0 + w1, tree->size() - 1));
+		
 	}
+
+
 
 }
 
