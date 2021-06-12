@@ -4,18 +4,20 @@ using namespace std;
 
 
 
-class object
-{
-    int myObj;
-};
+//class object
+//{
+//    int myObj;
+//    
+//};
 
 class Myshared_ptr
 {
-    object* pObj;
+    int* pObj;
     static int count; 
 
 public:
-    Myshared_ptr(object* myObj);
+    Myshared_ptr();
+    Myshared_ptr(int* myObj);
     Myshared_ptr(const Myshared_ptr& myObj);
     ~Myshared_ptr();
 
@@ -25,11 +27,13 @@ public:
 
 int Myshared_ptr::count = 0;
 
-Myshared_ptr::Myshared_ptr(object* myObj) : pObj(myObj) {};
+Myshared_ptr::Myshared_ptr() : pObj(nullptr) {};
+
+Myshared_ptr::Myshared_ptr(int* myObj) : pObj(myObj) {};
 
 Myshared_ptr::Myshared_ptr(const Myshared_ptr& myObj)
 {
-    Myshared_ptr p1 = new object();
+    Myshared_ptr p1 = new int();
     p1.pObj = myObj.pObj;
     count++;
 };
@@ -40,10 +44,13 @@ Myshared_ptr::~Myshared_ptr()
     {
         delete pObj;
         count = 0;
+        cout << "minus odin" << endl;
     }
     else
         pObj = nullptr;
     count--;
+
+    cout << "deleted" << endl;
 }
 
 Myshared_ptr& Myshared_ptr::operator=(Myshared_ptr& myObj)

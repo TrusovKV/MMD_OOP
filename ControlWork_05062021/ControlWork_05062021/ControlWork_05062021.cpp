@@ -22,8 +22,20 @@ int main()
 	auto lambdaPlus = [](int x, int y) {return x + y; };
 	auto lambdaMinus = [](double x, int y) {return x - y; };
 
-	cout << reduce(lambdaMinus, 4, 1) << endl;
 
 	cout << close_enough(1, 1) << endl;
+	cout << "Previous_function" << endl;
+	cout << reduce(lambdaMinus, 4, 1) << endl;
+	cout << "Updated_function"<< endl; // Corrected, according to the needs
+	cout << reduce1(lambdaMinus, 4, 1, 5, 6, 6, 6, 10, 0) << endl;
+
+
+	//int a = 5;
+	//int* ptr = &a;
+	//cout << "______"<< endl << *ptr << endl;
+	//Myshared_ptr d1(ptr);
+	//Myshared_ptr d2;
+	//d2 = d1;
+
 }
 
