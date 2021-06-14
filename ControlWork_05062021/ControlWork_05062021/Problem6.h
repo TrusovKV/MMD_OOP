@@ -26,7 +26,7 @@ public:
 		length = 0;
 	}
 
-	MyIntArray& operator=(const MyIntArray&& c) 
+	MyIntArray& operator=(const MyIntArray&& c) noexcept
 	{
 		if (this == &c)
 			return *this;
@@ -39,7 +39,7 @@ public:
 		return *this;
 	}
 
-	MyIntArray(const MyIntArray&& c)
+	MyIntArray(const MyIntArray&& c) noexcept
 	{
 		data = c.data;
 		length = c.length;

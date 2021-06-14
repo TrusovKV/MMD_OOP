@@ -45,12 +45,18 @@ int main()
 
 	cout << "_________TEST__________" << endl;
 	//reduce2(f1);
-	//int a = 5;
-	//int* ptr = &a;
-	//cout << "______"<< endl << *ptr << endl;
+	int a = 5;
+	int* ptr = &a;
+	cout << "______"<< endl << *ptr << endl;
 	//Myshared_ptr d1(ptr);
-	//Myshared_ptr d2;
+	//Myshared_ptr d2 = d1;
 	//d2 = d1;
+	using Dog = int;
+	//Myshared_ptr<Dog> d1 = Myshared_ptr(new Dog);
+	//Myshared_ptr d2 = d1;
+	//Myshared_ptr d3 = new Myshared_ptr(new Dog);
+
+//	d2 = d3;
 
 }
 
