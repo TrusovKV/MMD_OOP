@@ -22,32 +22,36 @@ public:
 		length = 0;
 	}
 	MyIntArray& operator= (const MyIntArray& c) {
+		data = new(int);
 		data = c.data;
-		length = 0;
+		length = c.length;
 	}
 
-	MyIntArray& operator=(const MyIntArray&& c) noexcept
+	MyIntArray& operator=( MyIntArray&& c) noexcept
 	{
-		if (this == &c)
-			return *this;
+		//if (this == &c)
+		//	return *this;
 
 		delete[] data;
 		length = 0;
 		data = c.data;
 		length = c.length;
-		c.~MyIntArray();
+		c.length = 0;
+		c.data = nullptr;
 		return *this;
 	}
 
-	MyIntArray(const MyIntArray&& c) noexcept
+	MyIntArray( MyIntArray&& c) noexcept
 	{
 		data = c.data;
 		length = c.length;
-		c.~MyIntArray();
+		c.length = 0;
+		c.data = nullptr;
 	}
 
 	MyIntArray(const MyIntArray& c)
 	{
+		data = new(int);
 		data = c.data;
 		length = c.length;
 	}

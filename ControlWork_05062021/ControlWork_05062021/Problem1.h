@@ -4,144 +4,67 @@ using namespace std;
 
 
 
-//class object
-//{
-//    int myObj;
-//    
-//};
 template<class T>
-class Myshared_ptr
+class my_shared_ptr
 {
-    T* pObj;
-    size_t count; 
-
+	T* ptr;
+	size_t* count;
 public:
-    //Myshared_ptr();
-    //Myshared_ptr(T* myObj);
-    //Myshared_ptr( Myshared_ptr const& myObj);
-    //~Myshared_ptr();
-    Myshared_ptr() :pObj(nullptr), count(0) {}
-    Myshared_ptr(T* p) : pObj(p), count(1)  {}
+	size_t tellCount()
+	{
+		return *count;
+	}
+	my_shared_ptr() :ptr(nullptr), count(0) {}
+	my_shared_ptr(T* p)
+	{
+		count = new size_t(1);
+		ptr = p;
+	}
 
+	my_shared_ptr(my_shared_ptr const& p)
+	{
+		if (ptr == p.ptr)
+		{
+			++*count;
+		}
+		else
+		{
+			ptr = p.ptr;
+			count = p.count;
+			++*count ;
+		}
+	}
 
-    Myshared_ptr& operator=(Myshared_ptr const& myObj)
-    {
-        if (this != &pObj)
-        {
-            count--;
-            pObj = myObj.pObj;
-            count = myObj.count;
-        }
-        return this;
-    }
-    T* operator ->() const
-    { 
-        return pObj;
-    }
-    T& operator*() const 
-    {
-        return *pObj;
-    }
-    Myshared_ptr& operator=(Myshared_ptr<T>&& myObj) noexcept
-    {
-        Myshared_ptr(std::move(pObj)).swap(*this);
-        count++;
-        pObj.count--;
-        return *this;
-    //    if (this == &myObj)
-    //    {
-    //        return *this;
-    //    }
+	~my_shared_ptr() {
+		if (ptr != nullptr && count == 0)
+		{
+			delete[]ptr;
+		}
+		else
+		{
+			--*count;
+		}
+	}
 
-    //delete pObj; // local
-    //count = 0;
-    //pObj = myObj.pObj;
-    //++count;
-    //myObj.pObj = nullptr;//source
-    //--myObj.count;
-    //return *this;
-    }
+	my_shared_ptr& operator = (my_shared_ptr const& p) {
+		if (this != &p)
+		{
+			--*count;
+			ptr = p.ptr;
+			count = p.count;
+			++*count;
+		}
+		return *this;
+	}
 
+	T* operator ->() const { return ptr; }
+	T& operator*() const { return *ptr; }
 
-    ~Myshared_ptr()
-    {
-        if (count == 1)
-        {
-            delete[] pObj;
-            count = 0;
-            cout << "minus odin" << endl;
-        }
-        else
-        {
-            pObj = nullptr;
-            count--;
-        }
-        cout << "deleted" << endl;
-    }
-    Myshared_ptr(Myshared_ptr const& myObj)
-    {
-        if (pObj == myObj.pObj)
-        {
-            count++;
-        }
-        else
-        {
-            pObj == myObj.pObj;
-            count = myObj.count;
-            count++;
-        }
-    }
-
+	my_shared_ptr& operator=(my_shared_ptr<T>&& p) noexcept
+	{
+		my_shared_ptr(std::move(p)).swap(*this);
+		++*count;
+		--p.*count;
+		return *this;
+	}
 };
-
-//int Myshared_ptr::count = 0;
-
-//Myshared_ptr<class T>::Myshared_ptr() : pObj(nullptr), count(1) {};
-//
-//Myshared_ptr<class T>::Myshared_ptr(T* myObj) : pObj(myObj), count(1) {};
-
-//Myshared_ptr<class T>::Myshared_ptr( Myshared_ptr const& myObj)
-//{
-//    if (pObj == myObj.pObj)
-//    {
-//        count++;
-//    }
-//    else
-//    {
-//        pObj == myObj.pObj;
-//        count = myObj.count;
-//        count++;
-//    }
-//};
-
-//Myshared_ptr<class T>::~Myshared_ptr()
-//{
-//    if (count == 1)
-//    {
-//        delete[] pObj;
-//        count = 0;
-//        cout << "minus odin" << endl;
-//    }
-//    else
-//    {
-//        pObj = nullptr;
-//        count--;
-//    }
-//    cout << "deleted" << endl;
-//}
-
-
-
-//Myshared_ptr<class T>& Myshared_ptr::operator=(Myshared_ptr&& myObj) noexcept
-//{
-//    if (this == &myObj)
-//        return *this;
-//
-//    delete pObj; // local
-//    count = 0;
-//    pObj = myObj.pObj;
-//    ++count;
-//    myObj.pObj = nullptr;//source
-//    --myObj.count;
-//    return *this;
-//}

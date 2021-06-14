@@ -51,12 +51,19 @@ int main()
 	//Myshared_ptr d1(ptr);
 	//Myshared_ptr d2 = d1;
 	//d2 = d1;
+	cout << "_________TEST__________" << endl;
 	using Dog = int;
-	//Myshared_ptr<Dog> d1 = Myshared_ptr(new Dog);
-	//Myshared_ptr d2 = d1;
-	//Myshared_ptr d3 = new Myshared_ptr(new Dog);
-
-	//d2 = d3;
+	my_shared_ptr<Dog> d1 = my_shared_ptr(new Dog);
+	cout << "d1: " << d1.tellCount() << endl << endl;
+	my_shared_ptr d2 = d1;
+	cout << "d1: " << d1.tellCount() << endl;
+	cout << "d2: " << d1.tellCount() << endl << endl;
+	my_shared_ptr d3 =  my_shared_ptr(new Dog);
+	cout << "d3: " << d3.tellCount() << endl<< endl;
+	d2 = d3;
+	cout << "d1: " << d1.tellCount() << endl;
+	cout << "d2: " << d2.tellCount() << endl;
+	cout << "d3: " << d3.tellCount() << endl << endl;
 
 }
 
