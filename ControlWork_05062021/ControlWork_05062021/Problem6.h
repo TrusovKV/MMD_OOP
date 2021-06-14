@@ -19,34 +19,37 @@ public:
 	~MyIntArray()
 	{
 		delete[] data;
+		length = 0;
 	}
 	MyIntArray& operator= (const MyIntArray& c) {
 		data = c.data;
+		length = 0;
 	}
 
-	MyIntArray& operator=(MyIntArray&& c) 
+	MyIntArray& operator=(const MyIntArray&& c) 
 	{
 		if (this == &c)
 			return *this;
 
 		delete[] data;
+		length = 0;
 		data = c.data;
-		c.data = nullptr;
+		length = c.length;
+		c.~MyIntArray();
 		return *this;
 	}
 
-	MyIntArray( MyIntArray&& c)
+	MyIntArray(const MyIntArray&& c)
 	{
 		data = c.data;
-		c.data = nullptr;
+		length = c.length;
+		c.~MyIntArray();
 	}
 
 	MyIntArray(const MyIntArray& c)
 	{
-		for (int i = 0; i < this->length; ++i)
-		{
-			c.data[i] = data[i];
-		}
+		data = c.data;
+		length = c.length;
 	}
 
 

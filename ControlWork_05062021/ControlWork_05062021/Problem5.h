@@ -33,17 +33,25 @@ struct FunctionTraits<R(*)()>
 	using ArgTypes = std::tuple<>;
 	static constexpr std::size_t ArgCount = 0;
 };
-
-
-
+//Mein type
+//template <class T, class Op>
+//auto reduce2(T f( Op t1, Op t2) )
+//{
+//	return std::is_same<t1, t2>::value;
+//}
+//
+//template <typename T, class Op, class... Args>
+//auto reduce2(T g( Op t1, Op t2, Args... arg) )
+//{
+//	return std::is_same<t1, t2>::value && reduce1(g, arg...);
+//}
 
 //test func
 template<class T>
 class test
 {
 private:
-	static auto freqy()
-	{};
+
 public:
 	void fo()
 	{
@@ -52,11 +60,11 @@ public:
 };
 
 
-double f1(int x, int y) {
+constexpr double f1(int x, int y) {
 	return x + y;
 }
 
-double f2(int x, int y) {
+constexpr double f2(int x, int y) {
 	return x * y;
 }
 

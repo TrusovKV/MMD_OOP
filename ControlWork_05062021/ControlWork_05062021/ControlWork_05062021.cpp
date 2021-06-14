@@ -13,6 +13,10 @@ using namespace std;
 	{
 		return 0;
 	}
+	int foo1()
+	{
+		return 0;
+	}
 
 int main()
 {
@@ -31,6 +35,7 @@ int main()
 	auto lambdaPlus = [](int x, int y) {return x + y; };
 	auto lambdaMinus = [](double x, int y) {return x - y; };
 
+	//FunctionTraits(&foo1);
 
 	cout << close_enough(1, 1) << endl;
 	cout << "Previous_function" << endl;
@@ -38,7 +43,8 @@ int main()
 	cout << "Updated_function"<< endl; // Corrected, according to the needs
 	cout << reduce1(lambdaMinus, 4, 1, 5, 6, 6, 6, 10, 0) << endl;
 
-
+	cout << "_________TEST__________" << endl;
+	//reduce2(f1);
 	//int a = 5;
 	//int* ptr = &a;
 	//cout << "______"<< endl << *ptr << endl;
