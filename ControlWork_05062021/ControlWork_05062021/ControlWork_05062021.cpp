@@ -9,13 +9,22 @@
 #include "Problem5.h"
 #include "Problem6.h"
 using namespace std;
+	double foo()
+	{
+		return 0;
+	}
 
 int main()
 {
-
+	double gg = 4;
+	//double foo();
+	test<decltype(foo)> tt;
 	auto func = multiply_functions(f1, f2);
 	cout << func(f1, f2)<<endl;
 
+	cout << "Testing function types" << endl << "____________"<<endl ; 
+	cout << std::is_function<decltype(foo)>::value << endl<< "____________" << endl;
+	tt.fo();
 	double res = sum1(3.14, 5, 7.);
 	cout << res << endl;
 
