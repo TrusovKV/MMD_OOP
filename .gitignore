@@ -255,3 +255,7 @@ HE/HE/Debug/HE.tlog/unsuccessfulbuild
 HE/.vs/HE/v16/.suo
 *.db
 *.sln
+*.obj
+HuffmanEncoder/HuffmanEncoder/my_archive.txt
+HuffmanEncoder/.vs/HuffmanEncoder/v16/.suo
+Задача1 тест.txt
