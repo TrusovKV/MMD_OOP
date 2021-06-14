@@ -1,18 +1,11 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <map>
 #include <vector>
 
-#include "myArch.h"
-
-#ifdef _WIN32
-#include <windows.h>
-#define SYSERROR()  GetLastError()
-#else
-#include <errno.h>
-#define SYSERROR()  errno
-#endif
+#include "Arch.h"
 
 using namespace std;
 
@@ -29,34 +22,32 @@ void myArchivator::readTxt() {
 			++weight[ch];
 		}
 	}
-
-
 }
 
 void myArchivator::BuildTree() {
-	
+
 	for (size_t i = 0; i < 0x100; ++i) {
 		if (weight[i] > 0) {
 			tree.push_back(Node{ (char)i, -1, -1, -1, false });
 			charMap[i] = tree.size() - 1;
-			sortedWeight.insert(make_pair(weight[i], tree.size() - 1)); //multimap
+			sortedWeight.insert(make_pair(weight[i], tree.size() - 1));
 		}
 	}
 
 	while (sortedWeight.size() > 1) {
 
-		int w0 = begin(sortedWeight)->first; // беру два первых элемента
+		int w0 = begin(sortedWeight)->first; 
 		int n0 = begin(sortedWeight)->second;
-		sortedWeight.erase(begin(sortedWeight)); // вытаскиваю сам элемент 
-		int w1 = begin(sortedWeight)->first; // точно есть два элемента
+		sortedWeight.erase(begin(sortedWeight)); 
+		int w1 = begin(sortedWeight)->first; 
 		int n1 = begin(sortedWeight)->second;
 		sortedWeight.erase(begin(sortedWeight));
 
-		tree.push_back(Node{ ' ', -1, n0, n1, false }); // пока не знаем родителя и ветку // добавляю в дерево нод
-		tree.at(n0).parent = tree.size() - 1; // тк только что добавили в него нод 
-		tree.at(n0).branch = false;
-		tree.at(n1).parent = tree.size() - 1;
-		tree.at(n1).branch = true;
+		tree.push_back(Node{ ' ', -1, n0, n1, false }); 
+		tree[n0].parent = tree.size() - 1; 
+		tree[n0].branch = false;
+		tree[n1].parent = tree.size() - 1;
+		tree[n1].branch = true;
 		sortedWeight.insert(make_pair(w0 + w1, tree.size() - 1));
 
 	}
@@ -68,13 +59,13 @@ void myArchivator::HaffmansCode() {
 	while (!f.eof()) {
 		unsigned char ch;
 		f.read((char*)&ch, sizeof(ch));
-		auto n = tree[charMap[ch]]; //взяла ноду из дерева и поднимаюсь вверх
-		vector<bool> Rev; //заполняю вектор, который потом переверну
+		auto n = tree[charMap[ch]]; 
+		vector<bool> Rev; 
 		while (n.parent != -1) {
 			Rev.push_back(n.branch);
 			n = tree[n.parent];
 		}
-		data.insert(end(data), Rev.rbegin(), Rev.rend()); // r - reverse(пихаю в перевернутом виде)
+		data.insert(end(data), Rev.rbegin(), Rev.rend()); 
 	}
 }
 
@@ -91,7 +82,7 @@ void myArchivator::writeToTxt() {
 	for (size_t i = 0; i <= data.size() / 8; ++i) {
 		unsigned char ch = 0;
 		for (int j = 0; j < 8; ++j) {
-			if (data[i * 8 + j]) { //выставляем бит, который сдвинут на j, в чар // data[i*8+j]
+			if (data[i * 8 + j]) { 
 				ch |= (1 << j);
 			}
 		}
@@ -105,7 +96,7 @@ void myArchivator::writeToTxt() {
 
 void myArchivator::GetInfo() {
 
-	ifstream f("D:\\GitHub\\MMD_OOP\\HuffmanEncoder\\my_archive.txt", ios_base::in | ios_base::binary);
+	ifstream f("D:\\GitHub\\MMD_OOP\\HuffmanEncoder\\test.txt", ios_base::in | ios_base::binary);
 	int treeSize;
 	f.read((char*)&treeSize, sizeof(treeSize));
 	for (int i = 0; i < treeSize; ++i) {
@@ -149,7 +140,7 @@ void myArchivator::UnPack() {
 		cout << "wrote the file successfully!" << endl;
 	}
 	else {
-		cerr << "Failed to open file : " << SYSERROR() << endl;
+		cout << "fail mfckr" << endl;
 	}
 
 }
