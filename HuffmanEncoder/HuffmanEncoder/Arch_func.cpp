@@ -34,12 +34,12 @@ void myArchivator::readTxt() {
 }
 
 void myArchivator::BuildTree() {
-
+	
 	for (size_t i = 0; i < 0x100; ++i) {
 		if (weight[i] > 0) {
-			tree.push_back(Node{ (char)i, -1, -1, -1, false });
-			charMap[i] = tree.size() - 1;
-			sortedWeight.insert(make_pair(weight[i], tree.size() - 1)); //multimap
+			tree->push_back(Node{ (char)i, -1, -1, -1, false });
+			charMap[i] = tree->size() - 1;
+			sortedWeight.insert(make_pair(weight[i], tree->size() - 1)); //multimap
 		}
 	}
 
@@ -52,12 +52,12 @@ void myArchivator::BuildTree() {
 		int n1 = begin(sortedWeight)->second;
 		sortedWeight.erase(begin(sortedWeight));
 
-		tree.push_back(Node{ ' ', -1, n0, n1, false }); // пока не знаем родителя и ветку // добавляю в дерево нод
-		tree[n0].parent = tree.size() - 1; // тк только что добавили в него нод 
-		tree[n0].branch = false;
-		tree[n1].parent = tree.size() - 1;
-		tree[n1].branch = true;
-		sortedWeight.insert(make_pair(w0 + w1, tree.size() - 1));
+		tree->push_back(Node{ ' ', -1, n0, n1, false }); // пока не знаем родителя и ветку // добавляю в дерево нод
+		tree->at(n0).parent = tree->size() - 1; // тк только что добавили в него нод 
+		tree->at(n0).branch = false;
+		tree->at(n1).parent = tree->size() - 1;
+		tree->at(n1).branch = true;
+		sortedWeight.insert(make_pair(w0 + w1, tree->size() - 1));
 
 	}
 }
