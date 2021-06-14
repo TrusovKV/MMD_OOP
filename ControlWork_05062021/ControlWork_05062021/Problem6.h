@@ -29,8 +29,7 @@ public:
 
 	MyIntArray& operator=( MyIntArray&& c) noexcept
 	{
-		//if (this == &c)
-		//	return *this;
+
 
 		delete[] data;
 		length = 0;
