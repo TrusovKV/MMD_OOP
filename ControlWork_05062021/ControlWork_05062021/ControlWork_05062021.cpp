@@ -65,5 +65,15 @@ int main()
 	cout << "d2: " << d2.tellCount() << endl;
 	cout << "d3: " << d3.tellCount() << endl << endl;
 
+	int math[] = { 0, 1, 4, 5, 7, 8, 10, 12, 15, 17 };
+
+	MyIntArray mint(10, math);
+	mint.tellAll();
+
+	MyIntArray mint1 = mint;
+	mint1.tellAll();
+	MyIntArray mint2(mint);
+	mint2.tellAll();
+	
 }
 
