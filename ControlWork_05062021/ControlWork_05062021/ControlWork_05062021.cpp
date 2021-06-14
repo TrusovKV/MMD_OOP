@@ -52,11 +52,11 @@ int main()
 	//Myshared_ptr d2 = d1;
 	//d2 = d1;
 	using Dog = int;
-	Myshared_ptr<Dog> d1 = Myshared_ptr(new Dog);
-	Myshared_ptr d2 = d1;
-	Myshared_ptr d3 = new Myshared_ptr(new Dog);
+	//Myshared_ptr<Dog> d1 = Myshared_ptr(new Dog);
+	//Myshared_ptr d2 = d1;
+	//Myshared_ptr d3 = new Myshared_ptr(new Dog);
 
-//	d2 = d3;
+	//d2 = d3;
 
 }
 

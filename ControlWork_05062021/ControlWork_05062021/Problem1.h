@@ -44,22 +44,22 @@ public:
     }
     Myshared_ptr& operator=(Myshared_ptr<T>&& myObj) noexcept
     {
-        //Myshared_ptr(std::move(pObj)).swap(*this);
-        //count++;
-        //pObj.count--;
-        //return *this;
-        if (this == &myObj)
-        {
-            return *this;
-        }
+        Myshared_ptr(std::move(pObj)).swap(*this);
+        count++;
+        pObj.count--;
+        return *this;
+    //    if (this == &myObj)
+    //    {
+    //        return *this;
+    //    }
 
-    delete pObj; // local
-    count = 0;
-    pObj = myObj.pObj;
-    ++count;
-    myObj.pObj = nullptr;//source
-    --myObj.count;
-    return *this;
+    //delete pObj; // local
+    //count = 0;
+    //pObj = myObj.pObj;
+    //++count;
+    //myObj.pObj = nullptr;//source
+    //--myObj.count;
+    //return *this;
     }
 
 
