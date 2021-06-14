@@ -16,10 +16,13 @@ class Myshared_ptr
     size_t count; 
 
 public:
-    Myshared_ptr();
-    Myshared_ptr(T* myObj);
-    Myshared_ptr( Myshared_ptr const& myObj);
-    ~Myshared_ptr();
+    //Myshared_ptr();
+    //Myshared_ptr(T* myObj);
+    //Myshared_ptr( Myshared_ptr const& myObj);
+    //~Myshared_ptr();
+    Myshared_ptr() :pObj(nullptr), count(0) {}
+    Myshared_ptr(T* p) : pObj(p), count(1)  {}
+
 
     Myshared_ptr& operator=(Myshared_ptr const& myObj)
     {
@@ -58,43 +61,74 @@ public:
     --myObj.count;
     return *this;
     }
+
+
+    ~Myshared_ptr()
+    {
+        if (count == 1)
+        {
+            delete[] pObj;
+            count = 0;
+            cout << "minus odin" << endl;
+        }
+        else
+        {
+            pObj = nullptr;
+            count--;
+        }
+        cout << "deleted" << endl;
+    }
+    Myshared_ptr(Myshared_ptr const& myObj)
+    {
+        if (pObj == myObj.pObj)
+        {
+            count++;
+        }
+        else
+        {
+            pObj == myObj.pObj;
+            count = myObj.count;
+            count++;
+        }
+    }
+
 };
 
 //int Myshared_ptr::count = 0;
 
-Myshared_ptr<class T>::Myshared_ptr() : pObj(nullptr), count(1) {};
+//Myshared_ptr<class T>::Myshared_ptr() : pObj(nullptr), count(1) {};
+//
+//Myshared_ptr<class T>::Myshared_ptr(T* myObj) : pObj(myObj), count(1) {};
 
-Myshared_ptr<class T>::Myshared_ptr(T* myObj) : pObj(myObj), count(1) {};
+//Myshared_ptr<class T>::Myshared_ptr( Myshared_ptr const& myObj)
+//{
+//    if (pObj == myObj.pObj)
+//    {
+//        count++;
+//    }
+//    else
+//    {
+//        pObj == myObj.pObj;
+//        count = myObj.count;
+//        count++;
+//    }
+//};
 
-Myshared_ptr<class T>::Myshared_ptr( Myshared_ptr const& myObj)
-{
-    if (pObj == myObj.pObj)
-    {
-        count++;
-    }
-    else
-    {
-        pObj == myObj.pObj;
-        count = myObj.count;
-        count++;
-    }
-};
-
-Myshared_ptr<class T>::~Myshared_ptr()
-{
-    if (count == 1)
-    {
-        delete[] pObj;
-        count = 0;
-        cout << "minus odin" << endl;
-    }
-    else
-    {
-        pObj = nullptr;
-        count--;
-    }
-    cout << "deleted" << endl;
-}
+//Myshared_ptr<class T>::~Myshared_ptr()
+//{
+//    if (count == 1)
+//    {
+//        delete[] pObj;
+//        count = 0;
+//        cout << "minus odin" << endl;
+//    }
+//    else
+//    {
+//        pObj = nullptr;
+//        count--;
+//    }
+//    cout << "deleted" << endl;
+//}
 
 
 

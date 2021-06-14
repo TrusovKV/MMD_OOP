@@ -2,49 +2,25 @@
 #include <type_traits>
 //templates
 
-template<typename F> struct FunctionTraits;
+template <class f1, class g1>
+struct type_traits_;
 
-template<typename R, typename... Args>
-struct FunctionTraitsBase
-{
-	using RetType = R;
-	using ArgTypes = std::tuple<Args...>;
-	static constexpr std::size_t ArgCount = sizeof...(Args);
+template <class F1, class F2, class a, class b>
+struct type_traits_<F1(*)(a, b), F2(*)(a, b)> {
+	using T1 = a;
+	using T2 = b;
 };
 
-template<typename R, typename... Args>
-struct FunctionTraits<R(*)(Args...)>
+template<class F1, class F2>
+auto reduce2(F1 f1, F2 f2)
 {
-	using base = FunctionTraitsBase<R, Args...>;
-	using Pointer = R(*)(Args...);
-	using RetType = R;
-	using ArgTypes = std::tuple<Args...>;
-	static constexpr std::size_t ArgCount = sizeof...(Args);
-	template<std::size_t N>
-	using NthArg = std::tuple_element_t<N, ArgTypes>;
-	using FirstArg = NthArg<0>;
-	using LastArg = NthArg<base::ArgCount - 1>;
+	return std::is_same
+		<
+		type_traits_<decltype(f1), decltype(f2)>::T1,
+		type_traits_<decltype(f1), decltype(f2)>::T2
+		>::value;
 };
-template<typename R>
-struct FunctionTraits<R(*)()>
-{
-	using Pointer = R(*)();
-	using RetType = R;
-	using ArgTypes = std::tuple<>;
-	static constexpr std::size_t ArgCount = 0;
-};
-//Mein type
-//template <class T, class Op>
-//auto reduce2(T f( Op t1, Op t2) )
-//{
-//	return std::is_same<t1, t2>::value;
-//}
-//
-//template <typename T, class Op, class... Args>
-//auto reduce2(T g( Op t1, Op t2, Args... arg) )
-//{
-//	return std::is_same<t1, t2>::value && reduce1(g, arg...);
-//}
+
 
 //test func
 template<class T>
