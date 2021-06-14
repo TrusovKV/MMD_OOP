@@ -70,7 +70,7 @@ void myArchivator::HaffmansCode() {
 		f.read((char*)&ch, sizeof(ch));
 		auto n = tree[charMap[ch]]; //взяла ноду из дерева и поднимаюсь вверх
 		vector<bool> Rev; //заполняю вектор, который потом переверну
-		while (n.parent != -1) {
+		while (nparent != -1) {
 			Rev.push_back(n.branch);
 			n = tree[n.parent];
 		}
