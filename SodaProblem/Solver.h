@@ -6,7 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-#include <QPoint>
+//#include <QPoint>
 using namespace std;
 
 class Solver
