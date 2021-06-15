@@ -85,7 +85,7 @@ public:
         T->setFrameShadow(QFrame::Raised);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(30, 100, 31, 16));
+        label->setGeometry(QRect(20, 100, 31, 16));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(20, 140, 31, 16));
@@ -142,7 +142,7 @@ public:
         v1_text->setGeometry(QRect(10, 200, 61, 22));
         p1_text = new QLineEdit(centralwidget);
         p1_text->setObjectName(QString::fromUtf8("p1_text"));
-        p1_text->setGeometry(QRect(10, 120, 61, 22));
+        p1_text->setGeometry(QRect(0, 120, 61, 22));
         p2_text = new QLineEdit(centralwidget);
         p2_text->setObjectName(QString::fromUtf8("p2_text"));
         p2_text->setGeometry(QRect(110, 120, 61, 22));
