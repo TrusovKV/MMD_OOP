@@ -52,6 +52,60 @@ void MainWindow::on_pushButton_clicked(bool checked)
         pointsR.push_back(QPointF(k,hb.tellRdat(k)));
     }
 
+   ui->p->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+   ui->T->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+   ui->rho->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+   ui->v->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+
+   ui->p->setGraphPoints(pointsP);
+   ui->T->setGraphPoints(pointsT);
+   ui->v->setGraphPoints(pointsU);
+   ui->rho->setGraphPoints(pointsR);
+
+update();
+}
+
+
+void MainWindow::on_ContiPlot_pressed()
+{
+    ui->p->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+    ui->T->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+    ui->rho->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+    ui->v->setAxes(renderArea::Axis("x", numberDivisions), renderArea::Axis("y", numberDivisions));
+
+    QVector<QPointF> pointsP; // to hub
+        QVector<QPointF> pointsT;
+            QVector<QPointF> pointsU;
+                QVector<QPointF> pointsR;
+
+    qreal step = 0.05; // to plotter
+    double nD = numberDivisions;
+    double st = step;
+    double dt = 0;
+    Hub hb(
+                ui->N_text->text().toDouble(),
+                ui->From_text->text().toDouble(),
+                ui->To_text->text().toDouble(),
+                ui->Time_text->text().toDouble() + dt,
+                ui->Adibatic_text->text().toDouble(),
+                ui->p1_text->text().toDouble(),
+                ui->rho1_text->text().toDouble(),
+                ui->v1_text->text().toDouble(),
+                ui->p2_text->text().toDouble(),
+                ui->rho2_text->text().toDouble(),
+                ui->v2_text->text().toDouble(),
+
+                nD,
+                st);
+
+dt+= ui->Time_text->text().toDouble();
+
+        ui->p->setGraphPoints(pointsP);
+        ui->T->setGraphPoints(pointsT);
+        ui->v->setGraphPoints(pointsU);
+        ui->rho->setGraphPoints(pointsR);
+
+     update();
 
 }
 

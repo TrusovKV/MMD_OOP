@@ -18,6 +18,10 @@ public:
 private slots:
     void on_pushButton_clicked(bool checked);
 
+    void on_ContiPlot_clicked(bool checked);
+
+    void on_ContiPlot_pressed();
+
 private:
     Ui::MainWindow *ui;
             int numberDivisions;
