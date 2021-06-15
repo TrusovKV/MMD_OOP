@@ -216,7 +216,7 @@
      <string>v2</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="N_text">
+   <widget class="QTextBrowser" name="N_text">
     <property name="geometry">
      <rect>
       <x>20</x>

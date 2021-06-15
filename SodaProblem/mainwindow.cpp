@@ -21,21 +21,23 @@ void MainWindow::on_pushButton_clicked(bool checked)
     QVector<QPointF> points; // to hub
 
     qreal step = 0.05; // to plotter
+    double nD = numberDivisions;
+    double st = step;
 
     Hub hb(
-                ui->N_text,
-                ui->From_text,
-                ui->To_text,
-                ui->Time_text,
-                ui->Adibatic_text,
-                ui->p1_text,
-                ui->rho1_text,
-                ui->v1_text,
-                ui->p2_text,
-                ui->rho2_text,
-                ui->v2_text,
+                ui->N_text->text().toDouble(),
+                ui->From_text->text().toDouble(),
+                ui->To_text->text().toDouble(),
+                ui->Time_text->text().toDouble(),
+                ui->Adibatic_text->text().toDouble(),
+                ui->p1_text->text().toDouble(),
+                ui->rho1_text->text().toDouble(),
+                ui->v1_text->text().toDouble(),
+                ui->p2_text->text().toDouble(),
+                ui->rho2_text->text().toDouble(),
+                ui->v2_text->text().toDouble(),
 
-                numberDivisions,
-                step);
+                nD,
+                st);
 }
 

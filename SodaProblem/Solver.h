@@ -155,5 +155,8 @@ public:
      int tellLlenT(){ return T.size();}
 
      double tellPdat(int i) { return P.at(i); }
+     double tellTdat(int i) { return T.at(i); }
+     double tellUdat(int i) { return U.at(i); }
+     double tellRdat(int i) { return R.at(i); }
 
 };
