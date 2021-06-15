@@ -11,23 +11,41 @@ using namespace std;
 class Hub
 {
 private:
+    int Ninit;
+    double x0init;
+    double xNinit;
+    double tinit;
+    double gammainit;
 
-    double coef_a;
-    double coef_b;
-    double coef_c;
+    double p1init;
+    double rho1init;
+    double u1init;
+    double p4init;
+    double rho4init;
+    double u4ini;
+
     double numberDivisions;
     double step;
     double length;
-    struct dataXY
-    {
-        double x;
-        double y;
-    };
-    vector<dataXY> vect;
-
 
 public:
-    Hub(double a, double b, double c, double NumDiv, double st) : coef_a(a), coef_b(b), coef_c(c), numberDivisions(NumDiv), step(st), length(0)  {}
+    Hub(    int Ninit;
+    int Ni,
+    double x0,
+    double xN,
+    double t,
+    double gamma,
+    double p1,
+    double rho1,
+    double u1,
+    double p4,
+    double rho4,
+    double u4,
+
+    double NumDiv,
+    double st) :  numberDivisions(NumDiv), step(st), length(0)  {}
+
+
     Hub(){}
     double tellA() {return coef_a;}
     double tellB() {return coef_b;}
@@ -49,12 +67,13 @@ public:
         Solver parasol(coef_a, coef_b, coef_c, numberDivisions, step) ;
         parasol.TheFinalSolution();
         length = parasol.tellLength();
+
         for (int i = 0; i < length; i++ )
         {
-            double x = parasol.tellVectX(i);
-            double y = parasol.tellVectY(i);
-            dataXY dat{x, y};
-            vect.push_back(dat);
+       //     double x = parasol.tellVectX(i);
+       //     double y = parasol.tellVectY(i);
+//            dataXY dat{x, y};
+      //      vect.push_back(dat);
         }
 
     }
