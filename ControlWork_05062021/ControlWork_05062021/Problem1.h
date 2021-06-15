@@ -23,16 +23,16 @@ public:
 
 	my_shared_ptr(my_shared_ptr const& p)
 	{
-		if (ptr == p.ptr)
+	/*	if (ptr == p.ptr)
 		{
 			++*count;
 		}
-		else
+		else*/
 		{
 			ptr = p.ptr;
 			count = p.count;
 			++*count ;
-		}
+		//}
 	}
 
 	~my_shared_ptr() {
