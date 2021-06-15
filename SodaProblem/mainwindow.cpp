@@ -81,7 +81,7 @@ void MainWindow::on_ContiPlot_pressed()
     qreal step = 0.05; // to plotter
     double nD = numberDivisions;
     double st = step;
-    double dt = 0;
+    double dt = 0.5;
     Hub hb(
                 ui->N_text->text().toDouble(),
                 ui->From_text->text().toDouble(),
@@ -97,8 +97,15 @@ void MainWindow::on_ContiPlot_pressed()
 
                 nD,
                 st);
+    hb.getVector();
 
-dt+= ui->Time_text->text().toDouble();
+    for(int k = 0; k< ui->N_text->text().toDouble(); k++)
+    {
+        pointsP.push_back(QPointF(k,hb.tellPdat(k)));
+        pointsT.push_back(QPointF(k,hb.tellTdat(k)));
+        pointsU.push_back(QPointF(k,hb.tellUdat(k)));
+        pointsR.push_back(QPointF(k,hb.tellRdat(k)));
+    }
 
         ui->p->setGraphPoints(pointsP);
         ui->T->setGraphPoints(pointsT);
