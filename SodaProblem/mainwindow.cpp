@@ -18,7 +18,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked(bool checked)
 {
-    QVector<QPointF> points; // to hub
+    QVector<QPointF> pointsP; // to hub
+        QVector<QPointF> pointsT;
+            QVector<QPointF> pointsU;
+                QVector<QPointF> pointsR;
 
     qreal step = 0.05; // to plotter
     double nD = numberDivisions;
@@ -39,5 +42,16 @@ void MainWindow::on_pushButton_clicked(bool checked)
 
                 nD,
                 st);
+    hb.getVector();
+
+    for(int k = 0; k< ui->N_text->text().toDouble(); k++)
+    {
+        pointsP.push_back(QPointF(k,hb.tellPdat(k)));
+        pointsT.push_back(QPointF(k,hb.tellTdat(k)));
+        pointsU.push_back(QPointF(k,hb.tellUdat(k)));
+        pointsR.push_back(QPointF(k,hb.tellRdat(k)));
+    }
+
+
 }
 

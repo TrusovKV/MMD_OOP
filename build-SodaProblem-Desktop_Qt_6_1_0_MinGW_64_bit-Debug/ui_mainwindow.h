@@ -12,11 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 #include "renderarea.h"
 
@@ -31,28 +31,28 @@ public:
     renderArea *v;
     renderArea *T;
     QLabel *label;
-    QTextEdit *p1_text;
-    QTextEdit *rho1_text;
     QLabel *label_2;
     QLabel *label_3;
-    QTextEdit *v1_text;
-    QTextEdit *v2_text;
-    QTextEdit *rho2_text;
     QLabel *label_4;
-    QTextEdit *p2_text;
     QLabel *label_5;
     QLabel *label_6;
-    QTextEdit *N_text;
-    QTextEdit *To_text;
     QLabel *label_7;
-    QTextEdit *From_text;
     QLabel *label_8;
     QLabel *label_9;
     QLabel *label_10;
-    QTextEdit *Adibatic_text;
     QLabel *label_11;
-    QTextEdit *Time_text;
     QPushButton *pushButton;
+    QLineEdit *N_text;
+    QLineEdit *Time_text;
+    QLineEdit *Adibatic_text;
+    QLineEdit *To_text;
+    QLineEdit *From_text;
+    QLineEdit *v2_text;
+    QLineEdit *v1_text;
+    QLineEdit *p1_text;
+    QLineEdit *p2_text;
+    QLineEdit *rho1_text;
+    QLineEdit *rho2_text;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -86,51 +86,24 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(20, 100, 31, 16));
-        p1_text = new QTextEdit(centralwidget);
-        p1_text->setObjectName(QString::fromUtf8("p1_text"));
-        p1_text->setGeometry(QRect(0, 120, 61, 21));
-        rho1_text = new QTextEdit(centralwidget);
-        rho1_text->setObjectName(QString::fromUtf8("rho1_text"));
-        rho1_text->setGeometry(QRect(0, 160, 61, 21));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(20, 140, 31, 16));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(20, 180, 31, 16));
-        v1_text = new QTextEdit(centralwidget);
-        v1_text->setObjectName(QString::fromUtf8("v1_text"));
-        v1_text->setGeometry(QRect(0, 200, 61, 21));
-        v2_text = new QTextEdit(centralwidget);
-        v2_text->setObjectName(QString::fromUtf8("v2_text"));
-        v2_text->setGeometry(QRect(110, 200, 61, 21));
-        rho2_text = new QTextEdit(centralwidget);
-        rho2_text->setObjectName(QString::fromUtf8("rho2_text"));
-        rho2_text->setGeometry(QRect(110, 160, 61, 21));
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(130, 140, 31, 16));
-        p2_text = new QTextEdit(centralwidget);
-        p2_text->setObjectName(QString::fromUtf8("p2_text"));
-        p2_text->setGeometry(QRect(110, 120, 61, 21));
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(130, 100, 31, 16));
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setGeometry(QRect(130, 180, 31, 16));
-        N_text = new QTextEdit(centralwidget);
-        N_text->setObjectName(QString::fromUtf8("N_text"));
-        N_text->setGeometry(QRect(20, 380, 61, 21));
-        To_text = new QTextEdit(centralwidget);
-        To_text->setObjectName(QString::fromUtf8("To_text"));
-        To_text->setGeometry(QRect(20, 340, 61, 21));
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setGeometry(QRect(40, 320, 31, 16));
-        From_text = new QTextEdit(centralwidget);
-        From_text->setObjectName(QString::fromUtf8("From_text"));
-        From_text->setGeometry(QRect(20, 300, 61, 21));
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(40, 280, 31, 16));
@@ -140,18 +113,45 @@ public:
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         label_10->setGeometry(QRect(130, 360, 31, 16));
-        Adibatic_text = new QTextEdit(centralwidget);
-        Adibatic_text->setObjectName(QString::fromUtf8("Adibatic_text"));
-        Adibatic_text->setGeometry(QRect(110, 340, 61, 21));
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setGeometry(QRect(110, 320, 81, 20));
-        Time_text = new QTextEdit(centralwidget);
-        Time_text->setObjectName(QString::fromUtf8("Time_text"));
-        Time_text->setGeometry(QRect(110, 380, 61, 21));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(470, 420, 93, 28));
+        N_text = new QLineEdit(centralwidget);
+        N_text->setObjectName(QString::fromUtf8("N_text"));
+        N_text->setGeometry(QRect(20, 390, 61, 22));
+        Time_text = new QLineEdit(centralwidget);
+        Time_text->setObjectName(QString::fromUtf8("Time_text"));
+        Time_text->setGeometry(QRect(110, 390, 61, 22));
+        Adibatic_text = new QLineEdit(centralwidget);
+        Adibatic_text->setObjectName(QString::fromUtf8("Adibatic_text"));
+        Adibatic_text->setGeometry(QRect(110, 340, 61, 22));
+        To_text = new QLineEdit(centralwidget);
+        To_text->setObjectName(QString::fromUtf8("To_text"));
+        To_text->setGeometry(QRect(20, 340, 61, 22));
+        From_text = new QLineEdit(centralwidget);
+        From_text->setObjectName(QString::fromUtf8("From_text"));
+        From_text->setGeometry(QRect(20, 300, 61, 22));
+        v2_text = new QLineEdit(centralwidget);
+        v2_text->setObjectName(QString::fromUtf8("v2_text"));
+        v2_text->setGeometry(QRect(110, 200, 61, 22));
+        v1_text = new QLineEdit(centralwidget);
+        v1_text->setObjectName(QString::fromUtf8("v1_text"));
+        v1_text->setGeometry(QRect(10, 200, 61, 22));
+        p1_text = new QLineEdit(centralwidget);
+        p1_text->setObjectName(QString::fromUtf8("p1_text"));
+        p1_text->setGeometry(QRect(0, 120, 61, 22));
+        p2_text = new QLineEdit(centralwidget);
+        p2_text->setObjectName(QString::fromUtf8("p2_text"));
+        p2_text->setGeometry(QRect(110, 120, 61, 22));
+        rho1_text = new QLineEdit(centralwidget);
+        rho1_text->setObjectName(QString::fromUtf8("rho1_text"));
+        rho1_text->setGeometry(QRect(10, 160, 61, 22));
+        rho2_text = new QLineEdit(centralwidget);
+        rho2_text->setObjectName(QString::fromUtf8("rho2_text"));
+        rho2_text->setGeometry(QRect(110, 160, 61, 22));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
