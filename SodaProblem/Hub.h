@@ -29,7 +29,7 @@ private:
     double length;
 
 public:
-    Hub(    int Ninit;
+    Hub(
     int Ni,
     double x0,
     double xN,
