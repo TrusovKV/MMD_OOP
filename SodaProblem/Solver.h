@@ -5,6 +5,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
+#include <cmath>
 #include <QPoint>
 using namespace std;
 
@@ -85,13 +86,20 @@ public:
              a2 = a1 + delta*(u1-u);
              p2 = p1+ pow(a2 / a1, alpha);
              dp2 = -gamma*p2/a2;
-             V4 = (gamma + 1)/4 * (u-u4) + sqrt(pow(gamma+1)/4,2)*(u-u4)*(u-u4) + a4 + a4;
+             V4 = (gamma + 1)/4 * (u-u4) + sqrt(pow((gamma+1)/4,2)*(u-u4)*(u-u4) + a4 + a4);
              M4 = V4/a4;
              p3 = p4*(1+(2+gamma)/(gamma+1) *(M4*M4 -1));
              a3 = a4*sqrt(gamma + 1 +(gamma-1)*(p3/p4) );
+             wd = u4 - V4;
+             dp3 = 2*gamma*(p4/a4)*(pow((abs(M4)) ,3)/ (1+ M4*M4));
 
-
+             u -= (p2-p3)/(dp2 - dp3);
+             iter++;
          }
+         rho2 = gamma*p2/(a2*a2);
+         rho3 = gamma*p3/(a2*a3);
+
+
      }
 
 
