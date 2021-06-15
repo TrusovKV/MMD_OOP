@@ -1,14 +1,27 @@
-#include <iostream>
-#include <string>
-#include "Arch.h"
+#pragma once
+#include "Archiver.h"
 
 int main()
 {
-	std::string cod, in, out;
-	std::cout << "enter: ";
-	std::cin >> cod;
-	std::cin >> in;
-	std::cin >> out;
+	Archivator arc;
 
-	Huff H(cod, in, out);
+	cout << "-c == code  || -d == decode " << endl;
+	char ch = ' ';
+	while (ch != 'c' && 'd' )
+	{
+		cout << "- ";
+		cin >> ch;
+		cout << endl;
+		if (ch == 'c')
+		{
+			arc.archive();
+			break;
+		}
+		if (ch == 'd')
+		{
+			arc.reArchive();
+			break;
+		}
+	}
+	return 0;
 }
