@@ -85,7 +85,7 @@ public:
         T->setFrameShadow(QFrame::Raised);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(20, 100, 31, 16));
+        label->setGeometry(QRect(30, 90, 31, 16));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(20, 140, 31, 16));
@@ -142,7 +142,7 @@ public:
         v1_text->setGeometry(QRect(10, 200, 61, 22));
         p1_text = new QLineEdit(centralwidget);
         p1_text->setObjectName(QString::fromUtf8("p1_text"));
-        p1_text->setGeometry(QRect(0, 120, 61, 22));
+        p1_text->setGeometry(QRect(10, 110, 61, 22));
         p2_text = new QLineEdit(centralwidget);
         p2_text->setObjectName(QString::fromUtf8("p2_text"));
         p2_text->setGeometry(QRect(110, 120, 61, 22));
@@ -181,6 +181,17 @@ public:
         label_10->setText(QCoreApplication::translate("MainWindow", "Time", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "Adiabatic coef", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        N_text->setText(QCoreApplication::translate("MainWindow", "400", nullptr));
+        Time_text->setText(QCoreApplication::translate("MainWindow", "0.002", nullptr));
+        Adibatic_text->setText(QCoreApplication::translate("MainWindow", "1.4", nullptr));
+        To_text->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
+        From_text->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        v2_text->setText(QCoreApplication::translate("MainWindow", "0.01", nullptr));
+        v1_text->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
+        p1_text->setText(QCoreApplication::translate("MainWindow", "1.1", nullptr));
+        p2_text->setText(QCoreApplication::translate("MainWindow", "0.3", nullptr));
+        rho1_text->setText(QCoreApplication::translate("MainWindow", "1.0", nullptr));
+        rho2_text->setText(QCoreApplication::translate("MainWindow", "0.125", nullptr));
     } // retranslateUi
 
 };
