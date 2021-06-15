@@ -53,7 +53,6 @@ public:
     QLineEdit *p2_text;
     QLineEdit *rho1_text;
     QLineEdit *rho2_text;
-    QPushButton *ContiPlot;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -153,9 +152,6 @@ public:
         rho2_text = new QLineEdit(centralwidget);
         rho2_text->setObjectName(QString::fromUtf8("rho2_text"));
         rho2_text->setGeometry(QRect(110, 160, 61, 22));
-        ContiPlot = new QPushButton(centralwidget);
-        ContiPlot->setObjectName(QString::fromUtf8("ContiPlot"));
-        ContiPlot->setGeometry(QRect(470, 460, 93, 28));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -185,7 +181,6 @@ public:
         label_10->setText(QCoreApplication::translate("MainWindow", "Time", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "Adiabatic coef", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        ContiPlot->setText(QCoreApplication::translate("MainWindow", "Continious Plot", nullptr));
     } // retranslateUi
 
 };

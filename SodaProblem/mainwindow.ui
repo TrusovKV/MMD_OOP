@@ -344,19 +344,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="ContiPlot">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>460</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Continious Plot</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
