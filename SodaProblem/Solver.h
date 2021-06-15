@@ -11,7 +11,7 @@ using namespace std;
 class Solver
 {
 private:
-  /*     int N;
+       int N;
        double x0;
        double xN;
        double t;
@@ -21,7 +21,7 @@ private:
        double u1;
        double p4;
        double rho4;
-       double u4;*/
+       double u4;
 
        double tol;
        double rho2;
@@ -83,7 +83,14 @@ public:
          while (abs(p2-p3)>tol)
          {
              a2 = a1 + delta*(u1-u);
-             p2
+             p2 = p1+ pow(a2 / a1, alpha);
+             dp2 = -gamma*p2/a2;
+             V4 = (gamma + 1)/4 * (u-u4) + sqrt(pow(gamma+1)/4,2)*(u-u4)*(u-u4) + a4 + a4;
+             M4 = V4/a4;
+             p3 = p4*(1+(2+gamma)/(gamma+1) *(M4*M4 -1));
+             a3 = a4*sqrt(gamma + 1 +(gamma-1)*(p3/p4) );
+
+
          }
      }
 
