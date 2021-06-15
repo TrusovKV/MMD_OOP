@@ -61,6 +61,14 @@ private:
        vector<double> R;
        vector<double> U;
        vector<double> T;
+
+       struct length_error{
+           int lenP;
+           int lenR;
+           int lenU;
+           int lenT;
+       };
+
    // QVector<QPointF> points;
 
 
@@ -139,8 +147,13 @@ public:
            }
            T.push_back(P[k]/ (R[k] * cV * (gamma -1)));
          }
-     }
+     }//EOF solve()
 
+     int tellLlenP(){ return P.size();}
+     int tellLlenU(){ return U.size();}
+     int tellLlenR(){ return R.size();}
+     int tellLlenT(){ return T.size();}
 
+     double tellPdat(int i) { return P.at(i); }
 
 };

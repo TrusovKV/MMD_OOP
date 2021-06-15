@@ -20,5 +20,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+            int numberDivisions;
 };
 #endif // MAINWINDOW_H

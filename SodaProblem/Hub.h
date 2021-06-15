@@ -22,15 +22,20 @@ private:
     double u1init;
     double p4init;
     double rho4init;
-    double u4ini;
+    double u4init;
 
     double numberDivisions;
     double step;
     double length;
 
+    vector<double> P;
+    vector<double> T;
+    vector<double> U;
+    vector<double> R;
+
 public:
     Hub(
-    int Ni,
+    int N,
     double x0,
     double xN,
     double t,
@@ -43,53 +48,72 @@ public:
     double u4,
 
     double NumDiv,
-    double st) :  numberDivisions(NumDiv), step(st), length(0)  {}
+    double st) :
+         Ninit(N),
+         x0init(x0),
+         xNinit(xN),
+         tinit(t),
+         gammainit(gamma),
 
+         p1init(p1),
+         rho1init(rho1),
+         u1init(u1),
+         p4init(p4),
+         rho4init(rho4),
+         u4init(u4),
+
+         numberDivisions(NumDiv), step(st), length(0)  {}
 
     Hub(){}
-    double tellA() {return coef_a;}
-    double tellB() {return coef_b;}
-    double tellC() {return coef_c;}
-    double tellNumDiv() {return numberDivisions;}
-    double tellStep() {return step;}
-
-    void getArgs(double &a, double &b, double &c, double &numDiv, double &st)
-    {
-        coef_a = a;
-        coef_b = b;
-        coef_c = c;
-        numberDivisions = numDiv;
-        step = st;
-    }
 
     void getVector()
     {
-        Solver parasol(coef_a, coef_b, coef_c, numberDivisions, step) ;
-        parasol.TheFinalSolution();
-        length = parasol.tellLength();
+        Solver parasol(        Ninit,
+                               x0init,
+                               xNinit,
+                               tinit,
+                               gammainit,
+                               p1init,
+                               rho1init,
+                               u1init,
+                               p4init,
+                               rho4init,
+                               u4init
+                       );
 
-        for (int i = 0; i < length; i++ )
+        parasol.solve();
+
+        for (int i = 0; i < parasol.tellLlenP(); i++ )
         {
-       //     double x = parasol.tellVectX(i);
-       //     double y = parasol.tellVectY(i);
-//            dataXY dat{x, y};
-      //      vect.push_back(dat);
+            P.push_back(parasol.tellPdat(i));
         }
-
+        for (int i = 0; i < parasol.tellLlenP(); i++ )
+        {
+            T.push_back(parasol.tellTdat(i));
+        }
+        for (int i = 0; i < parasol.tellLlenP(); i++ )
+        {
+            U.push_back(parasol.tellUdat(i));
+        }
+        for (int i = 0; i < parasol.tellLlenP(); i++ )
+        {
+            R.push_back(parasol.tellRdat(i));
+        }
     }
 
-    double tellX(int i)
-    {
-        return vect.at(i).x;
-    }
-    double tellY(int i)
-    {
-        return vect.at(i).y;
-    }
-    int tellSize()
-    {
-        return vect.size();
-    }
+    int tellLlenP(){ return P.size();}
+    int tellLlenU(){ return U.size();}
+    int tellLlenR(){ return R.size();}
+    int tellLlenT(){ return T.size();}
+
+    double tellPdat(int i) { return P.at(i); }
+    double tellTdat(int i) { return T.at(i); }
+    double tellUdat(int i) { return U.at(i); }
+    double tellRdat(int i) { return R.at(i); }
+
+    double tellNumDiv() {return numberDivisions;}
+    double tellStep() {return step;}
+
    //Solver parasol(hb.tellA(), hb.tellB(), hb.tellC(), hb.tellNumDiv(), hb.tellStep()) ;
     //hb.getVector( parasol.TheFinalSolution() );
 };
