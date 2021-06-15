@@ -289,3 +289,16 @@ SCVParser_Mk1/SCVParser_Mk1/SCVParser_Mk1.vcxproj.user
 Задача1 тест.txt
 SodaProblem/SodaProblem.pro.user
 SodaProblem/SodaProblem.pro
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/Makefile
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/SodaProblem.exe
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/renderarea.o
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/moc_renderarea.o
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/moc_renderarea.cpp
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/moc_predefs.h
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/moc_mainwindow.o
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/moc_mainwindow.cpp
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/mainwindow.o
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/debug/main.o
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/.qmake.stash
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/Makefile.Release
+build-SodaProblem-Desktop_Qt_6_1_0_MinGW_64_bit-Debug/Makefile.Debug
