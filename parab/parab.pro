@@ -14,6 +14,8 @@ SOURCES += \
     renderarea.cpp
 
 HEADERS += \
+    Hub.h \
+    Solver.h \
     mainwindow.h \
     renderarea.h
 
