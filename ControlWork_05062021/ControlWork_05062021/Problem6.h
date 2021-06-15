@@ -56,43 +56,59 @@ public:
 	MyIntArray& operator=( MyIntArray&& c) noexcept
 	{
 
+		//delete[] data;
+		//length = 0;
+		//data = c.data;
+		//length = c.length;
+		//c.length = 0;
+		//delete[] c.data;
+		//c.data = nullptr;
+		//return *this;
+		int* new_array = new int[c.length];
+		copy(c.data, c.data + c.length, new_array);
 
 		delete[] data;
-		length = 0;
-		data = c.data;
+
+		data = new_array;
 		length = c.length;
-		c.length = 0;
-		delete[] c.data;
-		c.data = nullptr;
-		return *this;
 	}
 
 	MyIntArray( MyIntArray&& c) noexcept
 	{
-		data = new int[c.length];
+		//data = new int[c.length];
 
-		for (int i = 0; i < c.length; i++)
-		{
-			data[i] = c.data[i];
-		}
+		//for (int i = 0; i < c.length; i++)
+		//{
+		//	data[i] = c.data[i];
+		//}
+		//length = c.length;
+
+		//c.length = 0;
+		//delete[] c.data;
+		//c.data = nullptr;
+
+		//No need to manually copy data
+		data = c.data;
 		length = c.length;
-
-		c.length = 0;
-		delete[] c.data;
 		c.data = nullptr;
-	}
-
-	MyIntArray(const MyIntArray& c)
-	{
-		length = c.length;
-		data = new int[length];
-
-		for (int i = 0; i< length; i++)
-		{
-			data[i] = c.data[i];
-		}
 
 	}
+
+	MyIntArray(const MyIntArray& c) : length(c.length), data(c.length ? new int[c.length] : nullptr) {
+		copy(c.data, c.data + c.length, data);
+	}
+
+	//MyIntArray(const MyIntArray& c)
+	//{
+	//	length = c.length;
+	//	data = new int[length];
+
+	//	for (int i = 0; i< length; i++)
+	//	{
+	//		data[i] = c.data[i];
+	//	}
+
+	//}
 
 
 	
