@@ -47,12 +47,19 @@ public:
 	{
 		item.root = nullptr;
 
-		inputPath = move(item.inputPath);
-		outputPath = move(item.outputPath);
-		rearchPath = move(item.rearchPath);
+		inputPath = item.inputPath;
+		outputPath = item.outputPath;
+		rearchPath = item.rearchPath;
 
-		code = move(item.code);
-		table = move(item.table);
+		code =item.code;
+		table = item.table;
+		//_______\\
+		||        ||
+		item.inputPath.clear();
+		item.outputPath.clear();
+		item.rearchPath.clear();
+		item.code.clear();
+		item.table.clear();
 	}
 
 	Archivator& operator=(Archivator&& item)
@@ -64,12 +71,18 @@ public:
 		root = item.root;
 		item.root = nullptr;
 
-		inputPath = move(item.inputPath);
-		outputPath = move(item.outputPath);
-		rearchPath = move(item.rearchPath);
+		inputPath =  item.inputPath;
+		outputPath = item.outputPath;
+		rearchPath = item.rearchPath;
 
-		code = move(item.code);
-		table = move(item.table);
+		code =  item.code;
+		table = item.table;
+
+		item.inputPath.clear();
+		item.outputPath.clear();
+		item.rearchPath.clear();
+		item.code.clear();
+		item.table.clear();
 
 		return *this;
 	}
