@@ -44,13 +44,14 @@ public:
 		cout << "deleted" << endl;
 	}
 	MyIntArray& operator= (const MyIntArray& c) {
+		delete[] data;
 		length = c.length;
 		data = new int[length];
 		for (int i = 0; i < length; i++)
 		{
 			data[i] = c.data[i];
 		}
-
+		return *this;
 	}
 
 	MyIntArray& operator=( MyIntArray&& c) noexcept
@@ -71,6 +72,7 @@ public:
 
 		data = new_array;
 		length = c.length;
+		c.length = 0;
 	}
 
 	MyIntArray( MyIntArray&& c) noexcept
