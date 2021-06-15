@@ -1,147 +1,233 @@
-#pragma once
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <map>
-#include <vector>
+﻿#include "Arch.h"
 
-#include "Arch.h"
-
-using namespace std;
-
-void myArchivator::readTxt() {
-
-	for (auto& i : weight)
-		i = 0;
-	{
-		ifstream f(ad, ios_base::in | ios_base::binary);
-		while (!f.eof())
+void Huff::input()
+{
+	do {
+		std::ifstream file(in, ios::binary);
+		if (file)
 		{
-			unsigned char ch;
-			f.read((char*)&ch, sizeof(ch));
-			++weight[ch];
-		}
-	}
-}
-
-void myArchivator::BuildTree() {
-
-	for (size_t i = 0; i < 0x100; ++i) {
-		if (weight[i] > 0) {
-			tree.push_back(Node{ (char)i, -1, -1, -1, false });
-			charMap[i] = tree.size() - 1;
-			sortedWeight.insert(make_pair(weight[i], tree.size() - 1));
-		}
-	}
-
-	while (sortedWeight.size() > 1) {
-
-		int w0 = begin(sortedWeight)->first; 
-		int n0 = begin(sortedWeight)->second;
-		sortedWeight.erase(begin(sortedWeight)); 
-		int w1 = begin(sortedWeight)->first; 
-		int n1 = begin(sortedWeight)->second;
-		sortedWeight.erase(begin(sortedWeight));
-
-		tree.push_back(Node{ ' ', -1, n0, n1, false }); 
-		tree[n0].parent = tree.size() - 1; 
-		tree[n0].branch = false;
-		tree[n1].parent = tree.size() - 1;
-		tree[n1].branch = true;
-		sortedWeight.insert(make_pair(w0 + w1, tree.size() - 1));
-
-	}
-}
-
-void myArchivator::HaffmansCode() {
-
-	ifstream f(ad, ios_base::in | ios_base::binary);
-	while (!f.eof()) {
-		unsigned char ch;
-		f.read((char*)&ch, sizeof(ch));
-		auto n = tree[charMap[ch]]; 
-		vector<bool> Rev; 
-		while (n.parent != -1) {
-			Rev.push_back(n.branch);
-			n = tree[n.parent];
-		}
-		data.insert(end(data), Rev.rbegin(), Rev.rend()); 
-	}
-}
-
-void myArchivator::writeToTxt() {
-
-	ofstream f(name, ios_base::out | ios_base::trunc | ios_base::binary);
-	int treeSize = tree.size();
-	f.write((char*)&treeSize, sizeof(treeSize));
-
-	for (const auto& i : tree) {
-		f.write((char*)&i, sizeof(i));
-	}
-
-	for (size_t i = 0; i <= data.size() / 8; ++i) {
-		unsigned char ch = 0;
-		for (int j = 0; j < 8; ++j) {
-			if (data[i * 8 + j]) { 
-				ch |= (1 << j);
+			while (!file.eof())
+			{
+				char c = file.get();
+				text[c]++;
 			}
+			file.close();
+			break;
 		}
-		f.write((char*)&ch, sizeof(ch));
-	}
-}
-
-/// <summary>
-/// For UNpack
-/// <summary>
-
-void myArchivator::GetInfo() {
-
-	ifstream f("D:\\GitHub\\MMD_OOP\\HuffmanEncoder\\test.txt", ios_base::in | ios_base::binary);
-	int treeSize;
-	f.read((char*)&treeSize, sizeof(treeSize));
-	for (int i = 0; i < treeSize; ++i) {
-		Node n;
-		f.read((char*)&n, sizeof(n));
-		tree.push_back(n);
-	}
-
-	while (!f.eof()) {
-		unsigned char ch;
-		f.read((char*)&ch, sizeof(ch));
-		for (int i = 0; i < 8; ++i) {
-			data.push_back((ch & (1 << i)) != 0);
+		else
+		{
+			std::cout << "Sorry, file is not open" << std::endl;
+			std::cout << "try again: ";
+			std::cin >> in;
 		}
-	}
+	} while (true);
 
 }
 
-void myArchivator::UnPack() {
+void Huff::freq_map()
+{
+	for (const auto& i : text)
+	{
+		uptr data = std::make_unique<Node>();
+		data->_data = i.first;
+		data->_frequency = i.second;
+		ptrData.emplace_back(std::move(data));
+	}
+}
 
-	ofstream of("unpacked_file.txt", ios_base::out | ios_base::trunc | ios_base::binary);
+Huff::uptr Huff::make_tree()
+{
+	while (ptrData.size() > 1)
+	{
+		std::sort(ptrData.begin(), ptrData.end(), functor());
+		uptr left_son{ std::move(ptrData.back()) };
+		ptrData.pop_back();
 
-	if (of.is_open()) {
+		uptr right_son{ std::move(ptrData.back()) };
+		ptrData.pop_back();
 
-		auto n = tree.size() - 1;
-		for (auto i : data) {
-			if (i) {
-				n = tree[n].one;
-			}
-			else {
-				n = tree[n].zero;
-			}
-			if (tree[n].zero == -1) {
-				of << tree[n].ch;
-				n = tree.size() - 1;
+		uptr parent = std::make_unique<Node>(std::move(left_son), std::move(right_son));
+		ptrData.emplace_back(std::move(parent));
+	}
+	return std::move(ptrData.front());
+}
+
+//-----------------code-------------------//
+
+void Huff::code()
+{
+	input();
+	freq_map();
+	uptr root = make_tree();
+	std::vector<bool> boo;
+	for_code(root, boo);
+	output(boo);
+	c_key();
+}
+
+void Huff::for_code(uptr const& root, std::vector<bool>& boo)
+{
+	if (root->_left != nullptr)
+	{
+		boo.emplace_back(false);
+		for_code(std::move(root->_left), boo);
+	}
+	if (root->_right != nullptr)
+	{
+		boo.emplace_back(true);
+		for_code(std::move(root->_right), boo);
+	}
+	if (root->_data) alphabet[root->_data] = boo;
+	if (!boo.empty()) boo.pop_back();
+}
+
+void Huff::output(std::vector<bool>& boo)
+{
+	std::ifstream infile(in, std::ios::binary);
+	std::ofstream outfile(out, std::ios::binary);
+	char buf = 0;
+	int count = 0;
+	while (!infile.eof())
+	{
+		char c = infile.get();
+		boo = alphabet[c];
+		for (int i = 0; i < boo.size(); i++)
+		{
+			buf = buf | boo[i] << (7 - count);
+			++count;
+			if (count == 8)
+			{
+				count = 0;
+				outfile << buf;
+				buf = 0;
 			}
 		}
 
-		of.flush();
-		of.close();
-		cout << "wrote the file successfully!" << endl;
 	}
-	else {
-		cout << "fail mfckr" << endl;
+	outfile.close();
+	infile.close();
+}
+
+void Huff::c_key()
+{
+	std::ofstream outfile("key.txt", std::ios::binary);
+	if (outfile.is_open())
+	{
+		auto&& index{ text.begin() };
+		do
+		{
+			outfile.put(index->first);
+			outfile.put(' ');
+			outfile << std::to_string(index->second);
+			++index;
+			if (index != text.end())
+			{
+				outfile.put(' ');
+			}
+		} while (index != text.end());
+		outfile.put(' ');
+		outfile.close();
 	}
+	else
+	{
+		std::cout << "sorry, smt wrong";
+	}
+}
+
+//---------------decode----------------//
+
+void Huff::decode()
+{
+	d_key();
+	//input();
+	freq_map();
+	uptr root = make_tree();
+	std::string decodedcontent;
+	decodedcontent.reserve(decoded_size(text));
+	for_decode(root, decodedcontent);
 
 }
 
+std::string Huff::readFile(const std::string& fileName) {
+	std::ifstream f(fileName);
+	std::stringstream ss;
+	ss << f.rdbuf();
+	return ss.str();
+}
+
+void Huff::d_key()
+{
+	char buff = 0;
+	std::string freq;
+	std::string content = readFile("key.txt");
+	for (std::size_t i{}; i < content.length(); ++i)
+	{
+		buff = content[i];
+		i += 2;
+		do
+		{
+			freq += content[i];
+			++i;
+		} while ((content[i] != ' ') && (content[i] != '.'));
+		text[buff] = static_cast<unsigned int>(std::stoi(freq));
+		freq.clear();
+	}
+	content.clear();
+}
+
+void Huff::for_decode(uptr const& root, std::string& decodedcontent)
+{
+	ifstream outfile(out, std::ios::binary);
+
+	Node* tmp = root.get();
+	int offset = 0;
+	int byte = outfile.get();
+	while (!outfile.eof())
+	{
+		if (byte & (1 << (7 - offset)))
+		{
+			tmp = tmp->_right.get();
+		}
+		else
+		{
+			tmp = tmp->_left.get();
+		}
+
+		if (tmp->_left == nullptr && tmp->_right == nullptr)
+		{
+			decodedcontent += tmp->_data;
+			tmp = root.get();
+		}
+		offset++;
+		if (offset == 8)
+		{
+			offset = 0;
+			byte = outfile.get();
+		}
+	}
+	outfile.close();
+
+	do {
+		std::ofstream outFile(in, std::ios::binary);
+		if (outFile.is_open()) {
+			outFile.write(&decodedcontent[0], static_cast<std::streamsize>(decodedcontent.size()));
+			outFile.close();
+			break;
+		}
+		else {
+			std::cout << "output file didn't open for some reason";
+			std::cout << "try again: ";
+			std::cin >> in;
+		}
+	} while (true);
+}
+
+std::size_t Huff::decoded_size(const Map& map)
+{
+	std::size_t tmp = 0;
+	for (const auto& i : map)
+	{
+		tmp += i.second;
+	}
+	return tmp;
+}
