@@ -98,6 +98,7 @@ void renderArea::renderGraph()
 }
 void renderArea::paintEvent(QPaintEvent* /*event*/)
 {
+    flag = true;
     renderAxes();
     if(flag == true)
     {renderGraph();}
