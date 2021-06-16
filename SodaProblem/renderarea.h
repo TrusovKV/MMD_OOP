@@ -10,8 +10,10 @@ class renderArea :
     public QFrame
 {
     Q_OBJECT
-
+private:
+    bool flag;
 public:
+    void getFlag(bool flg) {flag = flg;}
 
 
     class Axis

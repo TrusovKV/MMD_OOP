@@ -4,10 +4,20 @@
 #endif // SOLVER_H
 #pragma once
 #include <vector>
-#include <algorithm>
+//#include <algorithm>
 #include <cmath>
-//#include <QPoint>
+
 using namespace std;
+
+class Keaper
+{
+private:
+    bool g;
+public:
+    Keaper();
+    void getG(bool & gg);
+    bool tellG();
+};
 
 class Solver
 {
@@ -62,16 +72,6 @@ private:
        vector<double> U;
        vector<double> T;
 
-       struct length_error{
-           int lenP;
-           int lenR;
-           int lenU;
-           int lenT;
-       };
-
-   // QVector<QPointF> points;
-
-
 public:
        Solver(
        int Ninit,
@@ -97,5 +97,7 @@ public:
      double tellTdat(int i);
      double tellUdat(int i);
      double tellRdat(int i);
+     void getFlag(bool);
+
 
 };

@@ -1,5 +1,9 @@
 #include "Solver.h"
 
+Keaper::Keaper() : g(false) {};
+bool Keaper::tellG() { return g; };
+void Keaper::getG(bool & gg) {g = gg;};
+
 Solver::Solver(
 int Ninit,
 double x0init,
@@ -17,9 +21,10 @@ double u4init ) : R0(8.31) , iter(0), tol(0.01), cV(R0/(gammainit-1)), delta(0.5
                                                gamma(gammainit), N(Ninit), x0(x0init),xN(xNinit), rho1(rho1init), p1(p1init), u1(u1init), t(tinit),rho4(rho4init), u4(u4init) {};
 
 
+
 void Solver::solve()
 {
-    while (abs(p2-p3)>tol)
+        while (abs(p2-p3)>tol)
     {
         a2 = a1 + delta*(u1-u);
         p2 = p1+ pow(a2 / a1, alpha);

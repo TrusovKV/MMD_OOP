@@ -2,7 +2,7 @@
 
 
 renderArea::renderArea(QWidget* parent) :
-    QFrame(parent)
+    QFrame(parent), flag(false)
 {
     QPalette pl;
 
@@ -99,7 +99,8 @@ void renderArea::renderGraph()
 void renderArea::paintEvent(QPaintEvent* /*event*/)
 {
     renderAxes();
-    renderGraph();
+    if(flag == true)
+    {renderGraph();}
 }
 
 
