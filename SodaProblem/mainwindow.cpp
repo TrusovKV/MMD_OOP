@@ -69,6 +69,7 @@ void MainWindow::on_pushButton_clicked(bool checked)
    ui->rho->getFlag(b);
 
 update();
+b = false;
 }
 
 
