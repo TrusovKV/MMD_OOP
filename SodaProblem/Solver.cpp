@@ -20,7 +20,8 @@ double u4init ) : R0(8.31) , iter(0), tol(0.01), cV(R0/(gammainit-1)), delta(0.5
                          p2(1),   p3(0.5),   u((zeta*(a1 + delta + u1init) - a4+delta*4)/(1+zeta) + delta),
                                                gamma(gammainit), N(Ninit), x0(x0init),xN(xNinit), rho1(rho1init), p1(p1init), u1(u1init), t(tinit),rho4(rho4init), u4(u4init) {};
 
-
+bool Solver::sayYes() {return true;}
+bool Solver::sayNo() {return false;}
 
 void Solver::solve()
 {
@@ -80,6 +81,7 @@ void Solver::solve()
           R.push_back(rho4);
       }
       T.push_back(P[k]/ (R[k] * cV * (gamma -1)));
+
     }
 }//EOF solve()
 

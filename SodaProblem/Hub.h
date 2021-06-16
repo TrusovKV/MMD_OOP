@@ -50,7 +50,7 @@ public:
     double NumDiv,
     double st);
 
-    void getVector();
+    bool getVector();
 
     int tellLlenP();
     int tellLlenU();

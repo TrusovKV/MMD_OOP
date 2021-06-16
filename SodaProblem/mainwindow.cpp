@@ -42,7 +42,8 @@ void MainWindow::on_pushButton_clicked(bool checked)
 
                 nD,
                 st);
-    hb.getVector();
+    bool b = false;
+    b = hb.getVector();
 
     for(int k = 0; k< ui->N_text->text().toDouble(); k++)
     {
@@ -61,6 +62,11 @@ void MainWindow::on_pushButton_clicked(bool checked)
    ui->T->setGraphPoints(pointsT);
    ui->v->setGraphPoints(pointsU);
    ui->rho->setGraphPoints(pointsR);
+
+   ui->p->getFlag(b);
+   ui->T->getFlag(b);
+   ui->v->getFlag(b);
+   ui->rho->getFlag(b);
 
 update();
 }

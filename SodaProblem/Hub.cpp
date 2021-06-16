@@ -29,7 +29,7 @@ double st) :
 
      numberDivisions(NumDiv), step(st), length(0)  {};
 
-void Hub::getVector()
+bool Hub::getVector()
 {
     Solver parasol(        Ninit,
                            x0init,
@@ -62,6 +62,7 @@ void Hub::getVector()
     {
         R.push_back(parasol.tellRdat(i));
     }
+    return parasol.sayYes();
 
 }
 

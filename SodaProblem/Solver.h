@@ -87,6 +87,8 @@ public:
        double u4init );
 
      void solve();
+     bool sayYes();
+     bool sayNo();
 
      int tellLlenP();
      int tellLlenU();
