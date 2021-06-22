@@ -4,3 +4,7 @@ Solver::Solver()
 {
 
 }
+void Solver::subscribtion(MainWindow *w)
+{
+    this->w = w;
+}

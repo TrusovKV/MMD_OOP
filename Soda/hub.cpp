@@ -4,3 +4,8 @@ Hub::Hub()
 {
 
 }
+
+ Hub::Hub(Solver *parasol)
+ {
+    sol = parasol;
+ }
