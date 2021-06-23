@@ -10,6 +10,7 @@ public:
     Hub(Solver *parasol);
     Hub();
     Solver *sol;
+
 };
 
 #endif // HUB_H
