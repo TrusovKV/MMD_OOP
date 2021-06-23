@@ -7,7 +7,8 @@ Hub::Hub(Solver *M1){
     this->M = M1;
 }
 
-void Hub::wasClicked(double leftX,
+void Hub::wasClicked(
+                double leftX,
                 double rightX,
                 double gamma,
                 double tmax,
@@ -18,6 +19,6 @@ void Hub::wasClicked(double leftX,
                 double rhoR,
                 double uL,
                 double uR){
-    M->setData(N, leftX, rightX, tmax, gamma);
+    M->setData(leftX, rightX, gamma, tmax, N, pL, pR, rhoL, rhoR, uL, uR);
     M->RCS();
 }

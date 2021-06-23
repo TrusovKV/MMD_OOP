@@ -9,7 +9,18 @@ class Solver
 {
 public:
     Solver();
-    void setData(int N, double x0, double xN, double t, double gamma);
+    void setData(
+            double leftX,
+            double rightX,
+            double gamma,
+            double tmax,
+            int N,
+            double pLhs,
+            double pRhs,
+            double rhoLhs,
+            double rhoRhs,
+            double uLhs,
+            double uRhs);
     void RCS();
     void subscribe(MainWindow *w);
     void update();

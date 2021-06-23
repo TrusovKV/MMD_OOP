@@ -4,18 +4,29 @@
 using namespace std;
 
 Solver::Solver(){}
-void Solver::setData(int N, double x0, double xN, double t, double gamma) {
+void Solver::setData(
+        double leftX,
+        double rightX,
+        double gamma,
+        double tmax,
+        int N,
+        double pLhs,
+        double pRhs,
+        double rhoLhs,
+        double rhoRhs,
+        double uLhs,
+        double uRhs) {
     Nx = N;
-    xL = x0;
-    xR = xN;
-    tMax = t;
+    xL = leftX;
+    xR = rightX;
+    tMax = tmax;
     this->gamma = gamma;
-    pL = 1;
-    rhoL = 1;
-    uL = 0;
-    pR = 0.1;
-    rhoR = 0.125;
-    uR = 0;
+    pL = pLhs;
+    rhoL = rhoLhs;
+    uL = uLhs;
+    pR = pRhs;
+    rhoR = rhoRhs;
+    uR = uRhs;
 }
 void Solver::update(){
     View->drawGraph(P, R, U, T, xL, xR, Nx);
