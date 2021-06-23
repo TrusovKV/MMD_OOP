@@ -9,5 +9,5 @@ Hub::Hub(Solver *M1){
 
 void Hub:: wasClicked(/*double leftX, double rightX, double gamma, double tmax, int N*/){
    // M->setData(N, leftX, rightX, tmax, gamma);
-    M->solve();
+    M->Solver();
 }

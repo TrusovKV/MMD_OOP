@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     Solver parasol;
     Hub hb(&parasol);
     MainWindow w(&hb);
-    parasol.subscribtion(&w);
+    parasol.subscribe(&w);
     w.show();
     return a.exec();
 }

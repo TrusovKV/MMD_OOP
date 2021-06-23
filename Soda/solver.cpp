@@ -81,6 +81,40 @@ void Solver::RCS(){
     x3 = u * tMax;
     x4 = (u + a3) * tMax;
     x5 = (uR + a4) * tMax;
+//An Sol
+    xUD = abs(wd) * tMax;
 
+    for (int k = 0; k < Nx; k++) {
+
+        x = xL + k * (xR - xL) / Nx;
+        if (x <= x1) {
+            U.push_back(uL);
+            P.push_back(pL);
+            R.push_back(rhoL);
+        }
+        else if ((x <= x2) && (x > x1)) {
+            U.push_back(1 / (1 + delta) * (a1 + delta * uL + (x) / tMax));
+            a = 1 / (1 + delta) * (a1) + delta / (delta + 1) * (uL) - delta / (1 + delta) * (x) / tMax;
+            P.push_back(pL* pow(a / a1, alfa));
+            R.push_back(gamma * P[k] / (a * a));
+        }
+        else if ((x <= x3) && (x > x2)) {
+            U.push_back(u);
+            P.push_back(p2);
+            R.push_back(rho2);
+        }
+        else if ((x <= xUD) && (x > x3)) {
+            U.push_back(u);
+            P.push_back(p3);
+            R.push_back(rho3);
+        }
+        else {
+            U.push_back(uR);
+            P.push_back(pR);
+            R.push_back(rhoR);
+        }
+        T.push_back(P[k] / (R[k] * cV * (gamma - 1)));
+    }
+    this->update();
 }//EOF solve()
 
