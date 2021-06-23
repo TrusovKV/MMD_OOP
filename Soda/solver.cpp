@@ -19,7 +19,16 @@ int Solver::tellLlenR(){ return R.size();};
 int Solver::tellLlenT(){ return T.size();};
 void Solver::paint()
 {
-   // this->te;
+    int kMax = this->tellLlenP();
+    for(int k = 0; k< kMax; k++)
+    {
+        this->w->pointsP.push_back(QPointF(k,this->tellPdat(k)));
+        this->w->pointsT.push_back(QPointF(k,this->tellTdat(k)));
+        this->w->pointsU.push_back(QPointF(k,this->tellUdat(k)));
+        this->w->pointsR.push_back(QPointF(k,this->tellRdat(k)));
+    }
+   // this->w-
+
 }
 void Solver::initialize()
 {
