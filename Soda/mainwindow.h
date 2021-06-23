@@ -8,6 +8,7 @@
 #include <QVector>
 #include <QSharedPointer>
 #include <QMainWindow>
+#include <vector>
 #include "hub.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,7 +24,7 @@ public:
     ~MainWindow();
     Hub *hb;
     void drawAxes();
-    void drawGraphs();
+    void drawGraphs(/*std::vector<double> P, std::vector<double> T,std::vector<double> U,std::vector<double> R*/ );
     QVector<QPointF> pointsP;
         QVector<QPointF> pointsT;
             QVector<QPointF> pointsU;
@@ -45,10 +46,11 @@ private:
     int number_divisions;
     bool valid;
 
-
+public:
     void setGraphPoints(    QVector<QPointF> const & pointsP,
     QVector<QPointF> const & pointsT,
         QVector<QPointF> const & pointsU,
             QVector<QPointF> const & pointsR);
+
 };
 #endif // MAINWINDOW_H

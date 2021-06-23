@@ -77,7 +77,8 @@ public:
 private:
     void renderAxes();
     void renderGraph();
-
+protected:
+    void paintEvent(QPaintEvent* event) override;
 private:
     Axis axis_x;
     Axis axis_y;

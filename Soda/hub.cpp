@@ -10,7 +10,7 @@ Hub::Hub()
  {
     sol = parasol;
  }
- void Hub::transmittData(  int Ninit,
+ void Hub::transmittData(  /*int Ninit,
                            double x0init,
                            double xNinit,
                            double tinit,
@@ -20,8 +20,8 @@ Hub::Hub()
                            double u1init,
                            double p4init,
                            double rho4init,
-                           double u4init)
- {
+                           double u4init*/)
+ {/*
      this->sol->getValues(   Ninit,
                              x0init,
                              xNinit,
@@ -32,6 +32,6 @@ Hub::Hub()
                              u1init,
                              p4init,
                              rho4init,
-                             u4init );
+                             u4init );*/
      this->sol->solve();
  }

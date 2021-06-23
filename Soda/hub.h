@@ -13,7 +13,7 @@ public:
     Hub(Solver *parasol);
     Hub();
     Solver *sol;
-    void transmittData(  int Ninit,
+    void transmittData( /* int Ninit,
                          double x0init,
                          double xNinit,
                          double tinit,
@@ -23,7 +23,7 @@ public:
                          double u1init,
                          double p4init,
                          double rho4init,
-                         double u4init);
+                         double u4init*/);
 
 };
 

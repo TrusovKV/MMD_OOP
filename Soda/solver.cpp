@@ -17,18 +17,11 @@ int Solver::tellLlenP(){ return P.size();};
 int Solver::tellLlenU(){ return U.size();};
 int Solver::tellLlenR(){ return R.size();};
 int Solver::tellLlenT(){ return T.size();};
+
 void Solver::paint()
 {
-    int kMax = this->tellLlenP();
-    for(int k = 0; k< kMax; k++)
-    {
-        this->w->pointsP.push_back(QPointF(k,this->tellPdat(k)));
-        this->w->pointsT.push_back(QPointF(k,this->tellTdat(k)));
-        this->w->pointsU.push_back(QPointF(k,this->tellUdat(k)));
-        this->w->pointsR.push_back(QPointF(k,this->tellRdat(k)));
-    }
-   // this->w-
-
+    //this->w->drawAxes();
+    this->w->drawGraphs(/*P,T,U,R*/);
 }
 void Solver::getValues(int &Ninit,
                        double &x0init,
@@ -54,6 +47,8 @@ rho4 = rho4init;
 u4 = u4init;
 
 }
+
+
 void Solver::initialize()
 {
     cV = R0/(gamma-1);
@@ -68,7 +63,8 @@ void Solver::initialize()
 
 void Solver::solve()
 {
-    initialize();
+
+    /*initialize();
         while (abs(p2-p3)>tol)
     {
         a2 = a1 + delta*(u1-u);
@@ -124,9 +120,9 @@ void Solver::solve()
           P.push_back(p4);
           R.push_back(rho4);
       }
-      T.push_back(P[k]/ (R[k] * cV * (gamma -1)));
-    this->paint();
-    }
-}//EOF solve()
+      T.push_back(P[k]/ (R[k] * cV * (gamma -1)));*/
 
+    this->paint();
+    //}
+}//EOF solve()
 
