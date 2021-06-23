@@ -11,7 +11,7 @@ class Hub
 public:
     Hub(Solver *M1);
     Solver *M;
-    void wasClicked(/*double leftX, double rightX, double gamma, double tmax, int N*/);
+    void wasClicked(double leftX, double rightX, double gamma, double tmax, int N);
 };
 
 

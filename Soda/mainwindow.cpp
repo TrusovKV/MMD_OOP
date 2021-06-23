@@ -20,11 +20,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_exit_clicked()
-{
-    this->close();
-}
-
 void MainWindow::drawGraph(QVector<double> &data, QVector<double> &data2, QVector<double> &data1, QVector<double> &data3, double leftX, double rightX, double N)
 {
     int pictHeight = 300;
@@ -179,7 +174,7 @@ void MainWindow::onPlotclicked()
     double tmax = ui->Time_text->text().toDouble();
     double N = ui->N_text->text().toInt();
 
-    Contr->wasClicked(/*leftX, rightX, gamma, tmax, N*/);
+    Contr->wasClicked(leftX, rightX, gamma, tmax, N);
 }
 
 
