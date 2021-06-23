@@ -100,5 +100,5 @@ void renderArea::renderGraph()
 void renderArea::paintEvent(QPaintEvent* event)
 {
     renderAxes();
-    renderGraph();
+    //renderGraph();
 }

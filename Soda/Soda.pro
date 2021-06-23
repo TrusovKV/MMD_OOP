@@ -12,13 +12,11 @@ SOURCES += \
     hub.cpp \
     main.cpp \
     mainwindow.cpp \
-    renderarea.cpp \
     solver.cpp
 
 HEADERS += \
     hub.h \
     mainwindow.h \
-    renderarea.h \
     solver.h
 
 FORMS += \

@@ -1,37 +1,13 @@
 #include "hub.h"
 #include "solver.h"
+#include <iostream>
+using namespace std;
 
-Hub::Hub()
-{
-
+Hub::Hub(Solver *M1){
+    this->M = M1;
 }
 
- Hub::Hub(Solver *parasol)
- {
-    sol = parasol;
- }
- void Hub::transmittData(  /*int Ninit,
-                           double x0init,
-                           double xNinit,
-                           double tinit,
-                           double gammainit,
-                           double p1init,
-                           double rho1init,
-                           double u1init,
-                           double p4init,
-                           double rho4init,
-                           double u4init*/)
- {/*
-     this->sol->getValues(   Ninit,
-                             x0init,
-                             xNinit,
-                             tinit,
-                             gammainit,
-                             p1init,
-                             rho1init,
-                             u1init,
-                             p4init,
-                             rho4init,
-                             u4init );*/
-     this->sol->solve();
- }
+void Hub:: wasClicked(/*double leftX, double rightX, double gamma, double tmax, int N*/){
+   // M->setData(N, leftX, rightX, tmax, gamma);
+    M->solve();
+}
