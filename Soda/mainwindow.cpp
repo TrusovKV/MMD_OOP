@@ -181,6 +181,6 @@ void MainWindow::on_Plot_clicked()
     double uL = ui->v1_text->text().toDouble();
     double uR = ui->v2_text->text().toDouble();
 
-    Contr->wasClicked(leftX, rightX, gamma, tmax, N);
+    Contr->wasClicked(leftX, rightX, gamma, tmax, N, pL, pR, rhoL, rhoR, uL, uR);
 }
 
