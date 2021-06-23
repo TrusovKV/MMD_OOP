@@ -174,6 +174,12 @@ void MainWindow::on_Plot_clicked()
     double gamma = ui->Adibatic_text->text().toDouble();
     double tmax = ui->Time_text->text().toDouble();
     double N = ui->N_text->text().toInt();
+    double pL = ui->p1_text->text().toDouble();
+    double pR = ui->p2_text->text().toDouble();
+    double rhoL = ui->rho1_text->text().toDouble();
+    double rhoR = ui->rho2_text->text().toDouble();
+    double uL = ui->v1_text->text().toDouble();
+    double uR = ui->v2_text->text().toDouble();
 
     Contr->wasClicked(leftX, rightX, gamma, tmax, N);
 }
