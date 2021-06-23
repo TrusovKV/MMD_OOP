@@ -73,5 +73,14 @@ void Solver::RCS(){
         iter++;
     }
 
+    rho2 = gamma * p2 / (a2 * a2);
+    rho3 = gamma * p3 / (a2 * a3);
+
+    x1 = (uR - a1) * tMax;
+    x2 = (u - a2) * tMax;
+    x3 = u * tMax;
+    x4 = (u + a3) * tMax;
+    x5 = (uR + a4) * tMax;
+
 }//EOF solve()
 
