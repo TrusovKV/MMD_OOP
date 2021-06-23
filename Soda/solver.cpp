@@ -30,6 +30,30 @@ void Solver::paint()
    // this->w-
 
 }
+void Solver::getValues(int &Ninit,
+                       double &x0init,
+                       double &xNinit,
+                       double &tinit,
+                       double &gammainit,
+                       double &p1init,
+                       double &rho1init,
+                       double &u1init,
+                       double &p4init,
+                       double &rho4init,
+                       double &u4init )
+{
+    N = Ninit;
+    x0 = x0init;
+    t = tinit;
+    gamma = gammainit;
+p1 = p1init;
+rho1 = rho1init;
+u1 = u1init;
+p4 = p4init;
+rho4 = rho4init;
+u4 = u4init;
+
+}
 void Solver::initialize()
 {
     cV = R0/(gamma-1);

@@ -76,7 +76,17 @@ public:
     double tellUdat(int i);
     double tellRdat(int i);
 //get parameters
-
+    void getValues(int &Ninit,
+                   double &x0init,
+                   double &xNinit,
+                   double &tinit,
+                   double &gammainit,
+                   double &p1init,
+                   double &rho1init,
+                   double &u1init,
+                   double &p4init,
+                   double &rho4init,
+                   double &u4init );
 };
 
 #endif // SOLVER_H
