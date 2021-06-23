@@ -166,7 +166,8 @@ void MainWindow::drawGraph(QVector<double> &data, QVector<double> &data2, QVecto
     return;
 }
 
-void MainWindow::onPlotclicked()
+
+void MainWindow::on_Plot_clicked()
 {
     double leftX = ui->From_text->text().toDouble();
     double rightX = ui->To_text->text().toDouble();
@@ -176,5 +177,4 @@ void MainWindow::onPlotclicked()
 
     Contr->wasClicked(leftX, rightX, gamma, tmax, N);
 }
-
 

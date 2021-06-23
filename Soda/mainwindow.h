@@ -20,7 +20,8 @@ public:
     Hub *Contr;
     void drawGraph(QVector<double> &data, QVector<double> &data2, QVector<double> &data1, QVector<double> &data3, double leftX, double rightX, double N);
 private slots:
-    void onPlotclicked();
+    void on_Plot_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
