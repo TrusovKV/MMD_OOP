@@ -77,10 +77,6 @@ void MainWindow::drawGraph(QVector<double> &data, QVector<double> &data2, QVecto
     }
 
 
-//    paint.end();
-//    paint1.end();
-//    paint2.end();
-//    paint3.end();
 
     ui->outputGraph->setPixmap(graph);
     ui->outputGraph1->setPixmap(graph1);
@@ -163,7 +159,7 @@ void MainWindow::drawGraph(QVector<double> &data, QVector<double> &data2, QVecto
     paint3.drawPath(path3);
     paint3.end();
     ui->outputGraph3->setPixmap(graph3);
-    return;
+
 }
 
 

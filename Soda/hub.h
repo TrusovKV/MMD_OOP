@@ -9,7 +9,7 @@ class Solver;
 class Hub
 {
 public:
-    Hub(Solver *M1);
+    Hub(Solver *MM);
     Solver *M;
     void wasClicked(double leftX,
                     double rightX,
