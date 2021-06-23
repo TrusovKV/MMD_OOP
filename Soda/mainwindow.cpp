@@ -27,3 +27,20 @@ QVector<QPointF> const & pointsT,
     ui->u->setGraphPoints(pointsU);
     ui->rho->setGraphPoints(pointsR);
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    hb->transmittData(                ui->N_text->text().toDouble(),
+                                            ui->From_text->text().toDouble(),
+                                            ui->To_text->text().toDouble(),
+                                            ui->Time_text->text().toDouble(),
+                                            ui->Adibatic_text->text().toDouble(),
+                                            ui->p1_text->text().toDouble(),
+                                            ui->rho1_text->text().toDouble(),
+                                            ui->v1_text->text().toDouble(),
+                                            ui->p2_text->text().toDouble(),
+                                            ui->rho2_text->text().toDouble(),
+                                            ui->v2_text->text().toDouble()
+                                            );
+}
+
