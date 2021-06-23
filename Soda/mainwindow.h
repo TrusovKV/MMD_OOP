@@ -28,6 +28,7 @@ public:
         QVector<QPointF> pointsT;
             QVector<QPointF> pointsU;
                 QVector<QPointF> pointsR;
+                double numberDivisions;
 
 
 
@@ -42,6 +43,9 @@ private:
     bool valid;
 
 
-    void setGraphPoints(QVector<QPointF> const& points);
+    void setGraphPoints(    QVector<QPointF> const & pointsP,
+    QVector<QPointF> const & pointsT,
+        QVector<QPointF> const & pointsU,
+            QVector<QPointF> const & pointsR);
 };
 #endif // MAINWINDOW_H
